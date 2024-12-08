@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies List</title>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="x-icon" href="./images/movie logo.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap" rel="stylesheet">
+    <!-- OWL CAROUSEL -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" />
+    <!-- BOX ICONS -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="booking.css">
+    <link rel="stylesheet" href="grid.css">
+
+</head>
+<body>
+    <!-- NAV -->
+   <div class="nav-wrapper">
+    <div class="container">
+        <div class="nav">
+            <!-- Hàng đầu tiên -->
+            <div class="nav-top ">
+                <a href="#" class="logo">
+                    <i class='bx bx-movie-play bx-tada main-color'></i>Two<span class="main-color">K</span>T
+                </a>
+                <div class="col-4 d-none d-md-block"> <!-- Ẩn trên điện thoại -->
+                    <button class="btn btn-custom">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-ticket-perforated" viewBox="0 0 16 16">
+                        <path d="M4 4.85v.9h1v-.9zm7 0v.9h1v-.9zm-7 1.8v.9h1v-.9zm7 0v.9h1v-.9zm-7 1.8v.9h1v-.9zm7 0v.9h1v-.9zm-7 1.8v.9h1v-.9zm7 0v.9h1v-.9z"/>
+                        <path d="M1.5 3A1.5 1.5 0 0 0 0 4.5V6a.5.5 0 0 0 .5.5 1.5 1.5 0 1 1 0 3 .5.5 0 0 0-.5.5v1.5A1.5 1.5 0 0 0 1.5 13h13a1.5 1.5 0 0 0 1.5-1.5V10a.5.5 0 0 0-.5-.5 1.5 1.5 0 0 1 0-3A.5.5 0 0 0 16 6V4.5A1.5 1.5 0 0 0 14.5 3zM1 4.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v1.05a2.5 2.5 0 0 0 0 4.9v1.05a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-1.05a2.5 2.5 0 0 0 0-4.9z"/>
+                        </svg>
+                        <span>ĐẶT VÉ NGAY</span>
+                    </button>
+                    <button class="btn btn-custom">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cup-straw" viewBox="0 0 16 16">
+                            <path d="M13.902.334a.5.5 0 0 1-.28.65l-2.254.902-.4 1.927c.376.095.715.215.972.367.228.135.56.396.56.82q0 .069-.011.132l-.962 9.068a1.28 1.28 0 0 1-.524.93c-.488.34-1.494.87-3.01.87s-2.522-.53-3.01-.87a1.28 1.28 0 0 1-.524-.93L3.51 5.132A1 1 0 0 1 3.5 5c0-.424.332-.685.56-.82.262-.154.607-.276.99-.372C5.824 3.614 6.867 3.5 8 3.5c.712 0 1.389.045 1.985.127l.464-2.215a.5.5 0 0 1 .303-.356l2.5-1a.5.5 0 0 1 .65.278M9.768 4.607A14 14 0 0 0 8 4.5c-1.076 0-2.033.11-2.707.278A3.3 3.3 0 0 0 4.645 5c.146.073.362.15.648.222C5.967 5.39 6.924 5.5 8 5.5c.571 0 1.109-.03 1.588-.085zm.292 1.756C9.445 6.45 8.742 6.5 8 6.5c-1.133 0-2.176-.114-2.95-.308a6 6 0 0 1-.435-.127l.838 8.03c.013.121.06.186.102.215.357.249 1.168.69 2.438.69s2.081-.441 2.438-.69c.042-.029.09-.094.102-.215l.852-8.03a6 6 0 0 1-.435.127 9 9 0 0 1-.89.17zM4.467 4.884s.003.002.005.006zm7.066 0-.005.006zM11.354 5a3 3 0 0 0-.604-.21l-.099.445.055-.013c.286-.072.502-.149.648-.222"/>
+                        </svg>
+                        <span>ĐẶT BẮP NƯỚC</span>
+                    </button>
+                </div>
+                <div class="col-3 d-none me-5 d-md-block"> <!-- Ẩn trên điện thoại -->
+                    <div class="input-group search-container">
+                        <input type="text" class="form-control search-input" placeholder="Tìm phim, rạp">
+                        <span class="input-group-text bg-white border-0 search-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" 
+                                class="bi bi-search" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+                
+                    <ul class="nav-menu" id="nav-menu">
+                        <li>
+                            <a href="/register" class="btn btn-hover mx-2 btn-signin">
+                                <span>Sign in</span>
+                            </a>
+                        </li>
+                    </ul>
+                
+                       <!-- MOBILE MENU TOGGLE -->
+                <div class="hamburger-menu" id="hamburger-menu">
+                    <div class="hamburger"></div>
+                </div>
+             
+            </div>
+            <!-- Hàng thứ hai -->
+            <div class="nav-bottom ">
+                <ul class="nav-menu" id="nav-menu-second">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#">Movies</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </div>
+            
+           
+            
+        </div>
+     </div>
+    </div>
+    <!-- END NAV -->
+    <div class="booking-containter">
+        <div class="movie-title">
+            <img src="images/movies/bat-man.jpg" alt="Movie Poster">
+            <h3>THE DARK KNIGHT</h3>
+        </div>
+        <div class="location-n-time">
+            <h2>CHỌN RẠP VÀ SUẤT CHIẾU</h2>
+            <div class="LNT-options">
+                <div class="location">
+                    <h3>Cinestar Bình Dương(Sinh Viên)</h3>
+                    <p>Nhà văn hóa sinh viên, Đại học Quốc gia HCM, P.Đông Hòa,Dĩ An,Bình Dương</p>
+                    <div class="time">
+                        <button>9:00</button>
+                        <button>11:00</button>
+                        <button>14:00</button>
+                    </div>
+                </div>     
+                <div class="location">
+                    <h3>Cinestar Bình Dương(Sinh Viên)</h3>
+                    <p>Nhà văn hóa sinh viên, Đại học Quốc gia HCM, P.Đông Hòa,Dĩ An,Bình Dương</p>
+                    <div class="time">
+                        <button>9:00</button>
+                        <button>11:00</button>
+                        <button>14:00</button>
+                    </div>
+                </div> 
+            </div>     
+        </div>
+        <div class="ticket-container">
+            <h2>CHỌN LOẠI VÉ</h2>
+            <div class="ticket-options">
+                <div class="ticket">
+                    <div class="ticket-info">
+                        <h5>NGƯỜI LỚN</h5>
+                        <h5>ĐƠN</h5>
+                        <p class="price">45.000 VNĐ</p>
+                    </div>
+                    <div class="ticket-num">
+                        <button class="decrease">-</button>
+                        <p class="quantity">0</p>
+                        <button class="increase">+</button>
+                    </div>
+                </div>
+                <div class="ticket">
+                    <div class="ticket-info">
+                        <h5>NGƯỜI LỚN</h5>
+                        <h5>ĐƠN</h5>
+                        <p class="price">45.000 VNĐ</p>
+                    </div>
+                    <div class="ticket-num">
+                        <button class="decrease">-</button>
+                        <p class="quantity">0</p>
+                        <button class="increase">+</button>
+                    </div>
+                </div>
+                <div class="ticket">
+                    <div class="ticket-info">
+                        <h5>NGƯỜI LỚN</h5>
+                        <h5>ĐƠN</h5>
+                        <p class="price">45.000 VNĐ</p>
+                    </div>
+                    <div class="ticket-num">
+                        <button class="decrease">-</button>
+                        <p class="quantity">0</p>
+                        <button class="increase">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="seat-container">
+            <h2>CHỌN GHẾ</h2>
+            <h1>------------------------------------------------------</h1>
+            <h4>Màn hình</h4>
+            <div class="seat-table">
+                <div class="seat-row">
+                    <button class="seat" id="A01">A01</button>
+                    <button class="seat" id="A02">A02</button>
+                    <button class="seat" id="A03">A03</button>
+                    <button class="seat" id="A04">A04</button>
+                    <button class="seat" id="A05">A05</button>
+                    <button class="seat" id="A06">A06</button>
+                    <button class="seat" id="A07">A07</button>
+                    <button class="seat" id="A08">A08</button>
+                    <button class="seat" id="A09">A09</button>
+                    <button class="seat" id="A10">A10</button>
+                    <button class="seat" id="A11">A11</button>
+                    <button class="seat" id="A12">A12</button>
+                    <button class="seat" id="A13">A13</button>
+                    <button class="seat" id="A14">A14</button>
+                    <button class="seat" id="A15">A15</button>
+                </div>
+        
+                <div class="seat-row">
+                    <button class="seat" id="B01">B01</button>
+                    <button class="seat" id="B02">B02</button>
+                    <button class="seat" id="B03">B03</button>
+                    <button class="seat" id="B04">B04</button>
+                    <button class="seat" id="B05">B05</button>
+                    <button class="seat" id="B06">B06</button>
+                    <button class="seat" id="B07">B07</button>
+                    <button class="seat" id="B08">B08</button>
+                    <button class="seat" id="B09">B09</button>
+                    <button class="seat" id="B10">B10</button>
+                    <button class="seat" id="B11">B11</button>
+                    <button class="seat" id="B12">B12</button>
+                    <button class="seat" id="B13">B13</button>
+                    <button class="seat" id="B14">B14</button>
+                    <button class="seat" id="B15">B15</button>
+                </div>
+        
+                <div class="seat-row">
+                    <button class="seat" id="C01">C01</button>
+                    <button class="seat" id="C02">C02</button>
+                    <button class="seat" id="C03">C03</button>
+                    <button class="seat" id="C04">C04</button>
+                    <button class="seat" id="C05">C05</button>
+                    <button class="seat" id="C06">C06</button>
+                    <button class="seat" id="C07">C07</button>
+                    <button class="seat" id="C08">C08</button>
+                    <button class="seat" id="C09">C09</button>
+                    <button class="seat" id="C10">C10</button>
+                    <button class="seat" id="C11">C11</button>
+                    <button class="seat" id="C12">C12</button>
+                    <button class="seat" id="C13">C13</button>
+                    <button class="seat" id="C14">C14</button>
+                    <button class="seat" id="C15">C15</button>
+                </div>
+        
+                <div class="seat-row">
+                    <button class="seat" id="D01">D01</button>
+                    <button class="seat" id="D02">D02</button>
+                    <button class="seat" id="D03">D03</button>
+                    <button class="seat" id="D04">D04</button>
+                    <button class="seat" id="D05">D05</button>
+                    <button class="seat" id="D06">D06</button>
+                    <button class="seat" id="D07">D07</button>
+                    <button class="seat" id="D08">D08</button>
+                    <button class="seat" id="D09">D09</button>
+                    <button class="seat" id="D10">D10</button>
+                    <button class="seat" id="D11">D11</button>
+                    <button class="seat" id="D12">D12</button>
+                    <button class="seat" id="D13">D13</button>
+                    <button class="seat" id="D14">D14</button>
+                    <button class="seat" id="D15">D15</button>
+                </div>
+        
+                <div class="seat-row">
+                    <button class="seat" id="E01">E01</button>
+                    <button class="seat" id="E02">E02</button>
+                    <button class="seat" id="E03">E03</button>
+                    <button class="seat" id="E04">E04</button>
+                    <button class="seat" id="E05">E05</button>
+                    <button class="seat" id="E06">E06</button>
+                    <button class="seat" id="E07">E07</button>
+                    <button class="seat" id="E08">E08</button>
+                    <button class="seat" id="E09">E09</button>
+                    <button class="seat" id="E10">E10</button>
+                    <button class="seat" id="E11">E11</button>
+                    <button class="seat" id="E12">E12</button>
+                    <button class="seat" id="E13">E13</button>
+                    <button class="seat" id="E14">E14</button>
+                    <button class="seat" id="E15">E15</button>
+                </div>
+        
+                <div class="seat-row">
+                    <button class="seat" id="F01">F01</button>
+                    <button class="seat" id="F02">F02</button>
+                    <button class="seat" id="F03">F03</button>
+                    <button class="seat" id="F04">F04</button>
+                    <button class="seat" id="F05">F05</button>
+                    <button class="seat" id="F06">F06</button>
+                    <button class="seat" id="F07">F07</button>
+                    <button class="seat" id="F08">F08</button>
+                    <button class="seat" id="F09">F09</button>
+                    <button class="seat" id="F10">F10</button>
+                    <button class="seat" id="F11">F11</button>
+                    <button class="seat" id="F12">F12</button>
+                    <button class="seat" id="F13">F13</button>
+                    <button class="seat" id="F14">F14</button>
+                    <button class="seat" id="F15">F15</button>
+                </div>
+
+                <div class="seat-row">
+                    <button class="seat" id="G01">G01</button>
+                    <button class="seat" id="G02">G02</button>
+                    <button class="seat" id="G03">G03</button>
+                    <button class="seat" id="G04">G04</button>
+                    <button class="seat" id="G05">G05</button>
+                    <button class="seat" id="G06">G06</button>
+                    <button class="seat" id="G07">G07</button>
+                    <button class="seat" id="G08">G08</button>
+                    <button class="seat" id="G09">G09</button>
+                    <button class="seat" id="G10">G10</button>
+                    <button class="seat" id="G11">G11</button>
+                    <button class="seat" id="G12">G12</button>
+                    <button class="seat" id="G13">G13</button>
+                    <button class="seat" id="G14">G14</button>
+                    <button class="seat" id="G15">G15</button>
+                </div>
+                <div class="seat-duo-row">
+                    <button class="seat-duo" id="H01-02">H01-02</button>
+                    <button class="seat-duo" id="H03-04">H03-04</button>
+                    <button class="seat-duo" id="H05-06">H05-06</button>
+                    <button class="seat-duo" id="H07-08">H07-08</button>
+                    <button class="seat-duo" id="H09-10">H09-10</button>
+                    <button class="seat-duo" id="H11-12">H11-12</button>
+                    <button class="seat-duo" id="H13-14">H13-14</button>
+                </div>
+            </div>  
+            <div class="seat-info">
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="seat-color default"></div>
+                        <span>Ghế đơn mặc định</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="seat-color unavailable"></div>
+                        <span>Ghế không có sẵn</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="seat-color selected"></div>
+                        <span>Ghế đã chọn</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="seat-color booked"></div>
+                        <span>Ghế đã đặt</span>
+                    </div>
+                </div>
+            </div>            
+        </div>
+        <div class="food-drink-container">
+            <h2>CHỌN ĐỒ ĂN</h2>
+            <div class="food-drink-options">
+                <div class="food-drink">
+                    <img src="../../public/images/food-drink/Screenshot 2024-12-01 175003.png">
+                    <div class="food-drink-info">
+                        <h5>SNACK THÁI</h5>
+                        <p class="price">25.000 VNĐ</p>
+                        <div class="food-drink-num">
+                            <button class="decrease">-</button>
+                            <p class="quantity">0</p>
+                            <button class="increase">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="food-drink">
+                    <img src="../../public/images/food-drink/Screenshot 2024-12-01 175003.png">
+                    <div class="food-drink-info">
+                        <h5>SNACK THÁI</h5>
+                        <p class="price">25.000 VNĐ</p>
+                        <div class="food-drink-num">
+                            <button class="decrease">-</button>
+                            <p class="quantity">0</p>
+                            <button class="increase">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="food-drink">
+                    <img src="../../public/images/food-drink/Screenshot 2024-12-01 175003.png">
+                    <div class="food-drink-info">
+                        <h5>SNACK THÁI</h5>
+                        <p class="price">25.000 VNĐ</p>
+                        <div class="food-drink-num">
+                            <button class="decrease">-</button>
+                            <p class="quantity">0</p>
+                            <button class="increase">+</button>
+                        </div>
+                    </div>
+                </div>             
+            </div>
+        </div>
+        <div class="food-drink-container">
+            <h2>CHỌN ĐỒ UỐNG</h2>
+            <div class="food-drink-options">
+                <div class="food-drink">
+                    <img src="../../public/images/food-drink/Screenshot 2024-12-01 174833.png">
+                    <div class="food-drink-info">
+                        <h5>COCA 32OZ</h5>
+                        <p class="price">37.000 VNĐ</p>
+                        <div class="food-drink-num">
+                            <button class="decrease">-</button>
+                            <p class="quantity">0</p>
+                            <button class="increase">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="food-drink">
+                    <img src="../../public/images/food-drink/Screenshot 2024-12-01 174833.png">
+                    <div class="food-drink-info">
+                        <h5>COCA 32OZ</h5>
+                        <p class="price">37.000 VNĐ</p>
+                        <div class="food-drink-num">
+                            <button class="decrease">-</button>
+                            <p class="quantity">0</p>
+                            <button class="increase">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="food-drink">
+                    <img src="../../public/images/food-drink/Screenshot 2024-12-01 174833.png">
+                    <div class="food-drink-info">
+                        <h5>COCA 32OZ</h5>
+                        <p class="price">37.000 VNĐ</p>
+                        <div class="food-drink-num">
+                            <button class="decrease">-</button>
+                            <p class="quantity">0</p>
+                            <button class="increase">+</button>
+                        </div>
+                    </div>
+                </div>             
+            </div>
+        </div>
+        <div class="total">
+            <div class="remain-time">
+                <span>Thời gian giữ vé</span>
+                <p>5:00</p>
+            </div>
+            <div class="sum">
+                <span id="total-price">Tổng cộng: 0 VNĐ</span>
+                <button>Đặt vé</button>
+            </div>
+        </div>
+    </div>
+    <!--footer-->
+    <!-- FOOTER SECTION -->
+    <footer class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-4 col-md-6 col-sm-12">
+                    <div class="content">
+                        <a href="#" class="logo">
+                            <i class='bx bx-movie-play bx-tada main-color'></i>Fl<span class="main-color">i</span>x
+                        </a>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut veniam ex quos hic id nobis beatae earum sapiente! Quod ipsa exercitationem officiis non error illum minima iusto et. Dolores, quibusdam?
+                        </p>
+                        <div class="social-list">
+                            <a href="#" class="social-item">
+                                <i class="bx bxl-facebook"></i>
+                            </a>
+                            <a href="#" class="social-item">
+                                <i class="bx bxl-twitter"></i>
+                            </a>
+                            <a href="#" class="social-item">
+                                <i class="bx bxl-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-8 col-md-6 col-sm-12">
+                    <div class="row">
+                        <div class="col-3 col-md-6 col-sm-6">
+                            <div class="content">
+                                <p><b>Flix</b></p>
+                                <ul class="footer-menu">
+                                    <li><a href="#">About us</a></li>
+                                    <li><a href="#">My profile</a></li>
+                                    <li><a href="#">Pricing plans</a></li>
+                                    <li><a href="#">Contacts</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-3 col-md-6 col-sm-6">
+                            <div class="content">
+                                <p><b>Browse</b></p>
+                                <ul class="footer-menu">
+                                    <li><a href="#">About us</a></li>
+                                    <li><a href="#">My profile</a></li>
+                                    <li><a href="#">Pricing plans</a></li>
+                                    <li><a href="#">Contacts</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-3 col-md-6 col-sm-6">
+                            <div class="content">
+                                <p><b>Help</b></p>
+                                <ul class="footer-menu">
+                                    <li><a href="#">About us</a></li>
+                                    <li><a href="#">My profile</a></li>
+                                    <li><a href="#">Pricing plans</a></li>
+                                    <li><a href="#">Contacts</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-3 col-md-6 col-sm-6">
+                            <div class="content">
+                                <p><b>Download app</b></p>
+                                <ul class="footer-menu">
+                                    <li>
+                                        <a href="#">
+                                            <img src="../../public/images/google-play.png"  alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="../../public/images/app-store.png"alt="">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- END FOOTER SECTION -->
+
+    <!-- COPYRIGHT SECTION -->
+    <div class="copyright">
+        Copyright 2023  
+    </div>
+    <!-- END COPYRIGHT SECTION -->
+
+    <!-- SCRIPT -->
+    <!-- JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- OWL CAROUSEL -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous"></script>
+    <!-- APP SCRIPT -->
+    <script src="app.js"></script>
+    <script src="booking.js"></script>
+</body>
+</html>

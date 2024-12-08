@@ -1,0 +1,544 @@
+.booking-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+}
+.movie-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers horizontally */
+    justify-content: center; /* Centers vertically */
+    text-align: center; /* Centers text */
+    width: 300px;
+    height: 450px;
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+.movie-title img {
+    width: 100%;
+    height: 100%;
+}
+
+.movie-title title {
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.location-n-time {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers horizontally */
+    justify-content: center; /* Centers vertically */
+    margin-top: 30px; 
+    gap: 10px;
+}
+
+.LNT-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers horizontally */
+    justify-content: center; /* Centers vertically */
+    gap: 20px;
+}
+
+.LNT-options .location {
+    background-color: #333030;
+    width: 700px;
+    height: 150px;
+}
+
+.location h3,p {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.LNT-options .time {
+    margin-left: 10px;
+    gap: 10px;
+}
+
+.time button {
+    background-color: #333030;
+    color: white;
+    width: 60px;
+    height: 30px;
+}
+
+.time button.selected {
+    border: 2px solid white;
+}
+
+.ticket-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers horizontally */
+    justify-content: center; /* Centers vertically */
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.ticket-options {
+    display: flex;
+    align-items: center; /* Centers horizontally */
+    justify-content: center; /* Centers vertically */
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.ticket {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #f0f0f0; /* Viền sáng hơn */
+    border-radius: 10px;
+    width: 300px;
+    padding: 15px; /* Thêm khoảng cách bên trong */
+    gap: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hiệu ứng nổi */
+    transition: transform 0.2s ease; /* Hiệu ứng hover */
+}
+
+.ticket:hover {
+    transform: scale(1.02); /* Phóng to nhẹ khi hover */
+}
+
+.ticket-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px; /* Khoảng cách giữa các dòng */
+}
+
+.ticket-info h5 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.ticket-info p {
+    margin: 0;
+    font-size: 16px;
+}
+
+.ticket-num {
+    display: flex;
+    justify-content: space-between; /* Cách đều giữa các phần tử */
+    align-items: center;
+}
+
+.ticket-num button {
+    width: 40px; /* Nút to hơn */
+    height: 40px;
+    background-color: #007bff; /* Màu xanh nhấn mạnh */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.ticket-num button:hover {
+    background-color: #0056b3; /* Màu xanh đậm hơn khi hover */
+    transform: scale(1.1); /* Phóng to nhẹ */
+}
+
+.ticket-num p {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    width: 40px; /* Đảm bảo căn giữa tốt */
+}
+
+.seat-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers horizontally */
+    justify-content: center; /* Centers vertically */
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.seat-container h1,h4{
+    margin: 0;
+}
+
+.seat-container h2 {
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+.seat-table {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers horizontally */
+    justify-content: center; /* Centers vertically */
+    gap: 15px;
+}
+
+.seat-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Centers horizontally */
+    justify-content: center; /* Centers vertically */
+    gap: 15px;
+}
+
+.seat-duo-row {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.seat {
+    width: 40px;
+    height: 40px;
+    background-color: #f0f0f0; /* Màu xám nhạt */
+    border-radius: 5px; /* Bo góc */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.seat-duo {
+    width: 80px;
+    height: 40px;
+    background-color: #f0f0f0; /* Màu xám nhạt */
+    border-radius: 5px; /* Bo góc */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.seat:hover, .seat-duo:hover {
+    background-color: #575656; /* Màu xám nhạt hơn khi hover */
+    color: white;
+}
+
+.seat.selected, .seat-duo.selected {
+    background-color: #4CAF50;
+    color: black;
+}
+
+.seat.booked, .seat-duo.booked {
+    background-color: yellow;
+    color: black;
+}
+
+.seat.unavailable, .seat-duo.unavailable {
+    background-color: red;
+    color: white;
+}
+
+.seat-info {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.legend {
+    display: flex;
+    gap: 20px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+}
+
+.seat-color {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.default {
+    background-color: white;
+}
+
+.unavailable {
+    background-color: red;
+}
+
+.selected {
+    background-color: #4CAF50;
+}
+
+.booked {
+    background-color: yellow;
+}
+
+.food-drink-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers horizontally */
+    justify-content: center; /* Centers vertically */
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.food-drink-options {
+    display: flex;
+    align-items: center; /* Centers horizontally */
+    justify-content: center; /* Centers vertically */
+    margin-top: 20px;
+    gap: 40px;
+}
+
+.food-drink {
+    display: flex;
+    width: 300px;
+    gap: 10px;
+}
+
+.food-drink-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.food-drink-num {
+    display: flex;
+    justify-content: space-between; /* Cách đều giữa các phần tử */
+    align-items: center;
+}
+
+.food-drink-num button {
+    width: 40px; /* Nút to hơn */
+    height: 40px;
+    background-color: #007bff; /* Màu xanh nhấn mạnh */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.food-drink-num button:hover {
+    background-color: #0056b3; /* Màu xanh đậm hơn khi hover */
+    transform: scale(1.1); /* Phóng to nhẹ */
+}
+
+.food-drink-num p {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    width: 40px; /* Đảm bảo căn giữa tốt */
+}
+
+/* Tổng thể của container */
+.total {
+    width: 80%; /* Chiếm 80% chiều rộng */
+    margin: 0 auto; /* Căn giữa container */
+    display: flex;
+    justify-content: space-between; /* Căn đều 2 bên */
+    align-items: center; /* Căn giữa theo trục dọc */
+    margin-top: 40px;
+}
+
+/* Remain time */
+.remain-time {
+    flex: 0 0 20%; /* Chiếm 30% chiều rộng */
+    text-align: left; /* Căn chữ bên trái */
+    background-color: #007bff; /* Màu nền xanh lam */
+    color: #000; /* Chữ đen */
+    font-weight: bold; /* Chữ đậm */
+    padding: 10px; /* Khoảng cách bên trong */
+    border-radius: 5px; /* Bo góc */
+}
+
+/* Sum */
+.sum {
+    flex: 0 0 30%; /* Chiếm 30% chiều rộng */
+    font-weight: bold; /* Chữ đậm */
+    text-align: right; /* Căn chữ bên phải */
+}
+
+/* Nút đặt vé */
+.sum button {
+    background-color: #007bff; /* Màu nền xanh lam */
+    color: #fff; /* Chữ trắng */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 10px;
+}
+
+.sum button:hover {
+    background-color: #003d80; /* Màu khi hover */
+}
+
+/* Màn hình máy tính bảng (768px - 1024px) */
+@media (max-width: 1024px) {
+    .booking-container {
+        width: 90%; /* Chiếm 90% chiều rộng màn hình */
+    }
+
+
+    .LNT-options .location,
+    .ticket-options .ticket,
+    .food-drink {
+        width: 100%; /* Phần tử chiếm toàn bộ chiều rộng */
+    }
+
+    .total {
+        flex-direction: column; /* Đặt các phần tử theo chiều dọc */
+        align-items: center;
+        gap: 15px;
+    }
+}
+
+/* Màn hình điện thoại (<768px) */
+@media (max-width: 768px) {
+
+
+    .LNT-options .location h3,
+    .LNT-options .location p,
+    .ticket-info h5,
+    .ticket-info p {
+        font-size: 14px; /* Giảm kích thước chữ */
+    }
+
+    .ticket-options {
+        flex-direction: column; /* Đặt các vé theo chiều dọc */
+        gap: 10px;
+    }
+
+    .food-drink {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .remain-time,
+    .sum {
+        text-align: center; /* Căn chữ giữa */
+        flex: none; /* Loại bỏ chiều rộng cố định */
+    }
+    .seat-container {
+        width: 100%; /* Chiếm toàn bộ chiều rộng */
+        margin-top: 10px; /* Giảm khoảng cách trên */
+        gap: 10px; /* Giảm khoảng cách giữa các phần tử */
+    }
+
+    .seat-table {
+        gap: 10px; /* Giảm khoảng cách giữa các hàng ghế */
+    }
+
+    .seat-row {
+        gap: 8px; /* Giảm khoảng cách giữa các ghế trong một hàng */
+    }
+
+    .seat-duo-row {
+        gap: 15px; /* Giảm khoảng cách giữa các ghế đôi */
+    }
+
+    .seat {
+        width: 35px; /* Giảm kích thước ghế */
+        height: 35px;
+        font-size: 12px; /* Giảm kích thước chữ */
+    }
+
+    .seat-duo {
+        width: 70px; /* Giảm kích thước ghế đôi */
+        height: 35px;
+        font-size: 12px; /* Giảm kích thước chữ */
+    }
+
+    h1, h2, h4 {
+        font-size: 16px; /* Giảm kích thước font tiêu đề */
+    }
+
+}
+
+/* Màn hình rất nhỏ (<480px) */
+@media (max-width: 480px) {
+    .movie-title title {
+        font-size: 24px; /* Giảm kích thước tiêu đề */
+    }
+
+    .ticket-num button,
+    .food-drink-num button {
+        width: 30px; /* Giảm kích thước nút */
+        height: 30px;
+        font-size: 16px;
+    }
+
+    .total {
+        padding: 10px;
+    }
+    .seat-container {
+        margin-top: 10px; /* Giảm khoảng cách trên */
+        gap: 1px; /* Giảm khoảng cách giữa các phần tử */
+    }
+
+    .seat-table {
+        gap: 1px; /* Giảm khoảng cách giữa các hàng ghế */
+    }
+
+    .seat-row {
+        gap: 1px; /* Giảm khoảng cách giữa các ghế trong một hàng */
+    }
+
+    .seat-duo-row {
+        gap: 1px; /* Giảm khoảng cách giữa các ghế đôi */
+    }
+
+    .seat {
+        width: 25px; /* Giảm kích thước ghế */
+        height: 30px;
+        font-size: 10px; /* Giảm kích thước chữ */
+    }
+
+    .seat-duo {
+        width: 50px; /* Giảm kích thước ghế đôi */
+        height: 30px;
+        font-size: 10px; /* Giảm kích thước chữ */
+    }
+
+    .seat-info {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .legend {
+        display: grid;
+        grid-template-columns: repeat(2, 3fr);
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .legend-item {
+        gap: 5px;
+        font-size: 15px;
+    }
+    
+    .seat-color {
+        width: 25px;
+        height: 30px;
+    }
+
+    h1, h2, h4 {
+        font-size: 16px; /* Giảm kích thước font tiêu đề */
+    }
+}
