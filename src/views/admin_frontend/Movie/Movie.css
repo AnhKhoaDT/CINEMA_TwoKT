@@ -1,0 +1,32 @@
+.movie-add, .movie-list, .movie-edit {
+    margin-left: 200px; /* Để tránh đè sidebar */
+    background-color: #f8f9fa;
+    flex-grow: 1; /* Đảm bảo form chiếm hết không gian còn lại */
+    padding: 20px;
+}
+
+.movie-list table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.movie-list th, .movie-list td {
+    padding: 10px;
+    text-align: left;
+}
+
+.movie-list th {
+    background-color: #f0f0f0;
+    color: #333;
+    font-weight: normal;
+}
+
+.movie-list td {
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+}
+
+.movie-list tr:nth-child(even) td {
+    background-color: #f9f9f9;
+}

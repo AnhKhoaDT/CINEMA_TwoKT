@@ -1,0 +1,103 @@
+.DashBoard-container {
+    flex: 1; /* Mở rộng để chiếm hết không gian còn lại */
+    padding: 20px;
+    margin-left: 200px; /* Đảm bảo dashboard-container không đè lên sidebar */
+    background-color: #f8f9fa;
+    overflow: auto; /* Xử lý cuộn nếu nội dung dài */
+}
+
+.recent-revenue {
+    display: flex; /* Các hộp nằm ngang */
+    justify-content: space-between; /* Khoảng cách đều giữa các hộp */
+    gap: 15px; /* Khoảng cách giữa các hộp */
+}
+
+.recent-revenue-box {
+    flex: 1;
+    text-align: left; /* Căn lề trái cho nội dung */
+    padding: 15px;
+    border-radius: 10px;
+    background-color: white;
+    border: 2px solid #0d6efd; /* Màu viền mặc định */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Thay đổi màu viền mỗi hộp */
+.recent-revenue-box:nth-child(1) {
+    border-color: #f44336; /* Viền đỏ */
+}
+
+.recent-revenue-box:nth-child(2) {
+    border-color: #4caf50; /* Viền xanh lá */
+}
+
+.recent-revenue-box:nth-child(3) {
+    border-color: #ff9800; /* Viền cam */
+}
+
+.recent-revenue-box:nth-child(4) {
+    border-color: #2196f3; /* Viền xanh dương */
+}
+
+.recent-revenue-box p {
+    font-size: 16px;
+    color: #6c757d;
+    margin: 0 0 10px;
+}
+
+.recent-revenue-box h3 {
+    font-size: 20px; /* Tăng kích thước chữ số */
+    font-weight: bold;
+    color: #6c757d; /* Màu xám cho số */
+    margin: 0;
+}
+
+.chart {
+    display: flex; /* Layout ngang cho 2 biểu đồ */
+    justify-content: space-between;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.movie-chart, .revenue-chart {
+    flex: 1; /* Mỗi biểu đồ chiếm 50% chiều rộng */
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.revenue {
+    display: flex;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.movie-revenue, .cinema-revenue {
+    flex: 1;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f0f0f0;
+    color: #333;
+    font-weight: normal;
+}
+
+td {
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+}
+
+tr:nth-child(even) td {
+    background-color: #f9f9f9;
+}

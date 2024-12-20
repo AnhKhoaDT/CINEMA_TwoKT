@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Chỉnh sửa phòng chiếu</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Bootstrap Icons -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+        <link rel="stylesheet" href="../Cinema.css">
+        <link rel="stylesheet" href="../../sideBar.css">
+    </head>    
+    <body>
+        <div class="layout-wrapper">
+            <div class="sidebar">
+                <h4 class="text-white">Admin</h4>
+                <!-- Dashboard Link -->
+                <a class="sidebar-link" href="#">
+                    <i class="bi bi-house"></i> Dashboard
+                </a>
+                <ul class="sidebar-list">
+                    <!-- Sidebar Item 1 -->
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="#" data-bs-toggle="collapse" data-bs-target="#menu1">
+                            <i class="bi bi-film"></i> Quản lý phim
+                        </a>
+                        <div class="sidebar-collapse collapse" id="menu1">
+                            <ul class="sidebar-sublist ps-3">
+                                <li><a href="#" class="sidebar-sublink">Danh sách phim</a></li>
+                                <li><a href="#" class="sidebar-sublink">Thêm phim</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- Sidebar Item 2 -->
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="#" data-bs-toggle="collapse" data-bs-target="#menu2">
+                            <i class="bi bi-geo-alt"></i> Quản lý rạp phim
+                        </a>
+                        <div class="sidebar-collapse collapse" id="menu2">
+                            <ul class="sidebar-sublist ps-3">
+                                <li><a href="#" class="sidebar-sublink">Danh sách rạp phim</a></li>
+                                <li><a href="#" class="sidebar-sublink">Thêm rạp phim</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- Sidebar Item 3 -->
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="#" data-bs-toggle="collapse" data-bs-target="#menu3">
+                            <i class="bi bi-calendar"></i> Quản lý lịch chiếu 
+                        </a>
+                        <div class="sidebar-collapse collapse" id="menu3">
+                            <ul class="sidebar-sublist ps-3">
+                                <li><a href="#" class="sidebar-sublink">Danh sách lịch chiếu</a></li>
+                                <li><a href="#" class="sidebar-sublink">Thêm lịch chiếu</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="room-edit flex-grow-1 p-4">
+                <!-- Form chỉnh sửa phòng chiếu -->
+                <h3>Chỉnh sửa phòng chiếu</h3>
+    
+                <!-- Room name -->
+                <div class="mb-3">
+                    <label for="editRoomName" class="form-label">Tên phòng chiếu</label>
+                    <input type="text" class="form-control" id="editRoomName" style="width: 500px;" placeholder="Nhập tên phòng chiếu">
+                </div>
+    
+                <!-- Number of rows input -->
+                <div class="mb-3">
+                    <label for="editNumRows" class="form-label">Số hàng ghế</label>
+                    <div class="d-flex">
+                        <input type="number" class="form-control" id="editNumRows" style="width: 500px;" placeholder="Nhập số hàng ghế">
+                        <button class="btn btn-primary" id="editConfirmRowsBtn" style="margin-left: 5px;">Xác nhận</button>
+                    </div>
+                </div>
+    
+                <!-- Display seat rows after confirmation -->
+                <div id="editSeatEditContainer" style="display: none;">
+                    <h5>Chỉnh sửa ghế</h5>
+                    <div id="editSeatRowList"></div>
+                </div>
+    
+                <!-- Save edit button -->
+                <button type="button" class="btn btn-success mt-4" id="saveEditRoomBtn">Lưu chỉnh sửa</button>
+            </div>
+        </div>
+
+        <!-- Modal chỉnh sửa ghế -->
+        <div class="modal fade" id="editSeatModal" tabindex="-1" aria-labelledby="editSeatModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editSeatModalLabel">Chỉnh sửa ghế</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="editCurrentRow" class="form-label">Hàng ghế hiện tại</label>
+                            <input type="text" class="form-control" id="editCurrentRow" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editSeatCount" class="form-label">Số ghế</label>
+                            <input type="number" class="form-control" id="editSeatCount" placeholder="Nhập số ghế (1-20)">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Loại ghế</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="editSeatType" id="editSeatTypeSingle" value="single" checked>
+                                <label class="form-check-label" for="editSeatTypeSingle">
+                                    Ghế đơn
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="editSeatType" id="editSeatTypeDouble" value="double">
+                                <label class="form-check-label" for="editSeatTypeDouble">
+                                    Ghế đôi
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                        <button type="button" class="btn btn-primary" id="saveEditSeatsBtn">Lưu</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="RoomEdit.js"></script>
+    </body>
+</html>
