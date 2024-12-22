@@ -1,0 +1,7 @@
+.Discount {
+    flex: 1;
+    padding: 20px;
+    margin-left: 200px; /* Đảm bảo không đè lên sidebar */
+    background-color: #f8f9fa;
+    overflow: auto;
+}

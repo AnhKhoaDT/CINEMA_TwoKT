@@ -1,4 +1,4 @@
-.Show-schedule {
+.Show-schedule, .Show-time {
     margin-left: 200px; /* Để tránh đè sidebar */
     background-color: #f8f9fa;
     flex-grow: 1; /* Đảm bảo form chiếm hết không gian còn lại */

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Quản lý khuyến mãi</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Bootstrap Icons -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+        <link rel="stylesheet" href="Discount.css">
+        <link rel="stylesheet" href="../sideBar.css">
+    </head>    
+    <body>
+        <div class="layout-wrapper">
+            <div class="sidebar">
+                <h4 class="text-white">Admin</h4>
+                <!-- Dashboard Link -->
+                <a class="sidebar-link" href="#">
+                    <i class="bi bi-house"></i> Dashboard
+                </a>
+                <ul class="sidebar-list">
+                    <!-- Sidebar Item 1 -->
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="#" data-bs-toggle="collapse" data-bs-target="#menu1">
+                            <i class="bi bi-film"></i> Quản lý phim
+                        </a>
+                        <div class="sidebar-collapse collapse" id="menu1">
+                            <ul class="sidebar-sublist ps-3">
+                                <li><a href="#" class="sidebar-sublink">Danh sách phim</a></li>
+                                <li><a href="#" class="sidebar-sublink">Thêm phim</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- Sidebar Item 2 -->
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="#" data-bs-toggle="collapse" data-bs-target="#menu2">
+                            <i class="bi bi-geo-alt"></i> Quản lý rạp phim
+                        </a>
+                        <div class="sidebar-collapse collapse" id="menu2">
+                            <ul class="sidebar-sublist ps-3">
+                                <li><a href="#" class="sidebar-sublink">Danh sách rạp phim</a></li>
+                                <li><a href="#" class="sidebar-sublink">Thêm rạp phim</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- Sidebar Item 3 -->
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="#" data-bs-toggle="collapse" data-bs-target="#menu3">
+                            <i class="bi bi-calendar"></i> Quản lý lịch chiếu 
+                        </a>
+                        <div class="sidebar-collapse collapse" id="menu3">
+                            <ul class="sidebar-sublist ps-3">
+                                <li><a href="#" class="sidebar-sublink">Danh sách lịch chiếu</a></li>
+                                <li><a href="#" class="sidebar-sublink">Thêm lịch chiếu</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="Discount p-4">
+                <h3>Thông tin khuyến mãi</h3>
+            
+                <!-- Bộ lọc khuyến mãi -->
+                <div class="filter-section mb-4">
+                    <h5 class="mb-3">Lọc khuyến mãi theo thời gian hiệu lực</h5>
+                    <div class="d-flex align-items-center gap-3">
+                        <label for="startDate" class="form-label mb-0">Ngày bắt đầu:</label>
+                        <input type="date" id="startDate" class="form-control" style="width: 150px;"/>
+                
+                        <label for="endDate" class="form-label mb-0">Ngày hết hạn:</label>
+                        <input type="date" id="endDate" class="form-control" style="width: 150px;"/>
+                
+                        <button id="filterBtn" class="btn btn-primary">Lọc</button>
+                    </div>
+                </div>
+            
+                <!-- Nút thêm khuyến mãi -->
+                <button id="addPromoBtn" class="btn btn-success mb-3">Thêm khuyến mãi</button>
+            
+                <!-- Bảng danh sách khuyến mãi -->
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tiêu đề</th>
+                            <th>Chi tiết</th>
+                            <th>Đối tượng</th>
+                            <th>Loại giảm giá</th>
+                            <th>Giá trị giảm</th>
+                            <th>Ngày bắt đầu</th>
+                            <th>Ngày kết thúc</th>
+                            <th>Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody id="promoTableBody">
+                        <!-- Nội dung sẽ được render bằng JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Modal thêm khuyến mãi -->
+            <div class="modal fade" id="addPromoModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Thêm khuyến mãi</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="addPromoForm">
+                                <div class="mb-3">
+                                    <label for="promoTitle" class="form-label">Tiêu đề</label>
+                                    <input type="text" id="promoTitle" class="form-control" required />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="promoDetail" class="form-label">Chi tiết</label>
+                                    <textarea id="promoDetail" class="form-control" rows="3" required></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="promoTarget" class="form-label">Đối tượng giảm giá</label>
+                                    <select id="promoTarget" class="form-select" required>
+                                        <option value="" disabled selected>Chọn đối tượng</option>
+                                        <option value="do-an">Đồ ăn</option>
+                                        <option value="do-uong">Đồ uống</option>
+                                        <option value="combo">Combo</option>
+                                        <option value="gia-ve">Giá vé</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="promoType" class="form-label">Loại giảm giá</label>
+                                    <select id="promoType" class="form-select" required>
+                                        <option value="" disabled selected>Chọn loại giảm giá</option>
+                                        <option value="percent">Giảm theo %</option>
+                                        <option value="fixed">Giảm theo số tiền</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="promoValue" class="form-label">Giá trị giảm</label>
+                                    <input type="number" id="promoValue" class="form-control" required min="0" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="promoStart" class="form-label">Ngày bắt đầu</label>
+                                    <input type="date" id="promoStart" class="form-control" required />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="promoEnd" class="form-label">Ngày kết thúc</label>
+                                    <input type="date" id="promoEnd" class="form-control" required />
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="savePromoBtn" class="btn btn-primary">Lưu</button>
+                            <button class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Modal xóa khuyến mãi -->
+            <div class="modal fade" id="deletePromoModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Xóa khuyến mãi</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Bạn có chắc chắn muốn xóa khuyến mãi này không?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="confirmDeleteBtn" class="btn btn-danger">Xóa</button>
+                            <button class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="Discount.js"></script>
+    </body>
+</html>
