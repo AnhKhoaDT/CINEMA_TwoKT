@@ -108,7 +108,7 @@
                     <div class="tab-content" id="authTabsContent">
                         <!-- Form Đăng Nhập -->
                         <div class="tab-pane fade show active" id="login" role="tabpanel">
-                            <form id="signup-form" action="../auth/login" method="POST">
+                            <form id="signin-form" action="../auth/login" method="POST">
                                 <div class="mb-3">
                                     <label for="identifier" class="form-label">Tên Tài khoản</label>
                                     <input type="text" id="identifier" name="identifier" class="form-control" required>
@@ -133,6 +133,36 @@
                                 <button type="submit" class="btn text-cus btn-warning w-100">Đăng Nhập</button>
                             </form>
                         </div>
+                        <script>
+                            document.getElementById("signin-form").addEventListener("submit", async function(event) {
+                                event.preventDefault();
+                                const form = event.target;
+                                const formData = new FormData(form);
+                                const data = Object.fromEntries(formData.entries());
+                    
+                                try {
+                                    const response = await fetch(form.action, {
+                                        method: form.method,
+                                        headers: {
+                                            'Content-Type': 'application/json'
+                                        },
+                                        body: JSON.stringify(data)
+                                    });
+                    
+                                    const result = await response.json();
+                    
+                                    if (response.ok) {
+                                        alert(result.message);
+                                        window.location.href = '/'; // Chuyển hướng đến URL nhận được từ server
+                                    } else {
+                                        alert(result.message);
+                                    }
+                                } catch (error) {
+                                    console.error('Error:', error);
+                                    alert('An error occurred: ' + error.message);
+                                }
+                            });
+                        </script>
                 
                         <!-- Form Đăng Ký -->
                         <div class="tab-pane fade" id="signup" role="tabpanel">
