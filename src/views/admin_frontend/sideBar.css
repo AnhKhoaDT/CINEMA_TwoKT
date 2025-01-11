@@ -68,3 +68,21 @@
     color: #0d6efd;
 }
 
+.sidebar-logout {
+    margin-top: auto; /* Đẩy nút xuống cuối */
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    background-color: #dc3545; /* Màu nền cho nút */
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+.sidebar-logout:hover {
+    background-color: #c82333; /* Màu khi hover */
+    color: #fff;
+}
