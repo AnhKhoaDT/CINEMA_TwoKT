@@ -68,16 +68,24 @@
                             </span>
                         </div>
                     </div>
-                    
-                       
-                            <li>
-                                <a href="/register" class="btn btn-hover mx-2 btn-signin">
-                                    <span>Sign in</span>
-                                </a>
-                            </li>
+                    <!-- truyền user vào để hiển thị tên user sau khi đăng nhập -->
+                    <!-- <div class="col-4 d-none d-md-block">
+                        <% if (user) { %>
+                            <span>Welcome, <%= user.name %></span>
+                            <a href="/logout" class="btn btn-custom mx-2 btn-signin">Logout</a>
+                        <% } else { %>
+                            <a href="/register" class="btn btn-hover mx-2 btn-signin">
+                                <span>Sign in</span>
+                            </a>
+                        <% } %>
+                    </div> -->
+                    <li>
+                        <a href="/register" class="btn btn-hover mx-2 btn-signin">
+                            <span>Sign in</span>
+                        </a>
+                    </li>
                         
-                    
-                           <!-- MOBILE MENU TOGGLE -->
+                    <!-- MOBILE MENU TOGGLE -->
                     <div class="hamburger-menu" id="hamburger-menu">
                         <div class="hamburger"></div>
                     </div>
