@@ -110,6 +110,11 @@
                         </button>
                     </div>
                 </div>
+
+                <!-- Nút thêm lịch chiếu -->
+                <button class="btn btn-success mb-4" data-bs-toggle="modal" data-bs-target="#addScheduleModal">
+                    <i class="bi bi-plus-circle"></i> Thêm lịch chiếu
+                </button>
             
                 <!-- Bảng danh sách -->
                 <div class="schedule-list">
@@ -161,6 +166,42 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
                                 <button type="button" class="btn btn-primary" id="saveScheduleButton">Lưu thay đổi</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Thêm lịch chiếu -->
+                <div class="modal fade" id="addScheduleModal" tabindex="-1" aria-labelledby="addScheduleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="addScheduleModalLabel">Thêm lịch chiếu</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="addScheduleForm">
+                                    <div class="mb-3">
+                                        <label for="movieSelect" class="form-label">Chọn phim</label>
+                                        <select id="movieSelect" class="form-select">
+                                            <!-- Options will be rendered dynamically -->
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="theaterSelect" class="form-label">Chọn rạp</label>
+                                        <select id="theaterSelect" class="form-select">
+                                            <!-- Options will be rendered dynamically -->
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="endDate" class="form-label">Ngày kết thúc chiếu</label>
+                                        <input type="date" class="form-control" id="endDate" required>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                                <button type="button" class="btn btn-primary" id="saveScheduleButton">Lưu</button>
                             </div>
                         </div>
                     </div>

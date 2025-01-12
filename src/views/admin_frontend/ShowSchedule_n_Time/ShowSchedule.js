@@ -31,6 +31,7 @@ const renderTable = (data) => {
             <td>${movie.status === "upcoming" ? "Sắp chiếu" : movie.status === "nowShowing" ? "Đang chiếu" : "Đã hết chiếu"}</td>
             <td>
                 <button class="btn btn-warning btn-sm" onclick="editMovie(${movie.id})"><i class="bi bi-pencil"></i></button>
+                <button class="btn btn-danger btn-sm ms-2" onclick="deleteMovie(${movie.id})"><i class="bi bi-trash"></i></button>
             </td>
         `;
         tableBody.appendChild(row);
@@ -84,3 +85,46 @@ document.getElementById("saveScheduleButton").addEventListener("click", () => {
 
 // Hiển thị mặc định
 renderTable(movies);
+
+ // Mock data for movies and theaters
+ const movie = [
+    { id: 1, title: "Phim 1" },
+    { id: 2, title: "Phim 2" },
+    { id: 3, title: "Phim 3" }
+];
+const theaters = [
+    { id: 1, name: "Rạp 1" },
+    { id: 2, name: "Rạp 2" },
+    { id: 3, name: "Rạp 3" }
+];
+
+// Function to render the dropdown options
+function renderDropdowns() {
+    const movieSelect = document.getElementById("movieSelect");
+    const theaterSelect = document.getElementById("theaterSelect");
+
+    movies.forEach(movie => {
+        const option = document.createElement("option");
+        option.value = movie.id;
+        option.textContent = movie.title;
+        movieSelect.appendChild(option);
+    });
+
+    theaters.forEach(theater => {
+        const option = document.createElement("option");
+        option.value = theater.id;
+        option.textContent = theater.name;
+        theaterSelect.appendChild(option);
+    });
+}
+
+// Function to ensure the selected date is after today
+function validateEndDate() {
+    const endDateInput = document.getElementById("endDate");
+    const today = new Date().toISOString().split("T")[0]; // Get today's date in YYYY-MM-DD format
+    endDateInput.min = today; // Set the minimum selectable date to today
+}
+
+// Initialize dropdowns and date validation
+renderDropdowns();
+validateEndDate();
