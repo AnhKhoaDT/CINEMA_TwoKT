@@ -64,6 +64,13 @@ router.get('/movielist', async (req, res) => {
     }
 });
 
+router.get('/paying', (req, res) => {
+    try {
+        res.render('paymethod'); // Truyền activeTab để xác định tab hiển thị
+    } catch (error) {
+        console.error(error);
+    }
+});
 
 
 module.exports = router;
