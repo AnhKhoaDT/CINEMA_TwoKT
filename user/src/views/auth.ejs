@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" type="x-icon" href="./assets/movie logo.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TwoKT</title>
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- OWL CAROUSEL -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+      integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+      crossorigin="anonymous"
+    />
+    <!-- BOX ICONS -->
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./Home/style.css" />
+  </head>
+  <body>
+    <%- include('./components/navbar') %>
+
+    <section class="bg-light py-3">
+      <div class="container">
+        <div
+          class="container bg-white p-4 shadow-sm col-12 col-md-6 mx-auto mt-5"
+        >
+          <ul
+            class="nav-sign nav-tabs text-cus mb-4 d-flex"
+            id="authTabs"
+            role="tablist"
+          >
+            <li class="nav-item flex-fill" role="presentation">
+              <button
+                class="nav-link active w-100"
+                id="login-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#login"
+                type="button"
+                role="tab"
+              >
+                ĐĂNG NHẬP
+              </button>
+            </li>
+            <li class="nav-item flex-fill" role="presentation">
+              <button
+                class="nav-link w-100"
+                id="signup-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#signup"
+                type="button"
+                role="tab"
+              >
+                ĐĂNG KÝ
+              </button>
+            </li>
+          </ul>
+
+          <div class="tab-content" id="authTabsContent">
+            <!-- Form Đăng Nhập -->
+            <div class="tab-pane fade show active" id="login" role="tabpanel">
+              <form id="login-form">
+                <div class="mb-3">
+                  <label for="identifier" class="form-label"
+                    >Tên Tài khoản</label
+                  >
+                  <input
+                    type="text"
+                    id="identifier"
+                    name="identifier"
+                    class="form-control"
+                    placeholder="Tên tài khoản"
+                    required
+                  />
+                </div>
+                <div class="mb-3 position-relative">
+                  <label for="login-password" class="form-label"
+                    >Mật khẩu</label
+                  >
+                  <input
+                    type="password"
+                    id="login-password"
+                    name="password"
+                    class="form-control"
+                    placeholder="Mật khẩu"
+                    required
+                  />
+                  <span
+                    class="toggle-password position-absolute"
+                    style="top: 50%; right: 10px; cursor: pointer"
+                  >
+                    <svg
+                      id="eye-icon"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-eye-slash"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7 7 0 0 0-2.79.588l.77.771A6 6 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755q-.247.248-.517.486z"
+                      />
+                      <path
+                        d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829"
+                      />
+                      <path
+                        d="M3.35 5.47q-.27.24-.518.487A13 13 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7 7 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12z"
+                      />
+                    </svg>
+                  </span>
+                </div>
+                <div
+                  class="d-flex justify-content-between align-items-center mb-3"
+                >
+                  <a href="#" class="text-decoration-none">Quên mật khẩu?</a>
+                  <label class="form-check-label">
+                    <input
+                      type="checkbox"
+                      class="form-check-input"
+                      name="remember"
+                    />
+                    Duy trì đăng nhập
+                  </label>
+                </div>
+                <button type="submit" class="btn text-cus btn-warning w-100">
+                  Đăng Nhập
+                </button>
+              </form>
+            </div>
+
+            <!-- Form Đăng Ký -->
+            <div class="tab-pane fade" id="signup" role="tabpanel">
+              <form id="signup-form">
+                <div class="mb-3">
+                  <label for="name" class="form-label">Họ và tên</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    class="form-control"
+                    placeholder="Họ và tên"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="dob" class="form-label">Ngày sinh</label>
+                  <input
+                    type="date"
+                    id="dob"
+                    name="dob"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="phone" class="form-label">Số điện thoại</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    class="form-control"
+                    placeholder="Số điện thoại"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="signup-username" class="form-label"
+                    >Tên tài khoản</label
+                  >
+                  <input
+                    type="text"
+                    id="signup-username"
+                    name="username"
+                    class="form-control"
+                    placeholder="Tên tài khoản"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="form-control"
+                    placeholder="Điền email"
+                    required
+                  />
+                </div>
+                <div class="mb-3 position-relative">
+                  <label for="signup-password" class="form-label"
+                    >Mật khẩu</label
+                  >
+                  <input
+                    type="password"
+                    id="signup-password"
+                    name="password"
+                    class="form-control"
+                    placeholder="Mật khẩu"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="confirm-password" class="form-label"
+                    >Xác nhận mật khẩu</label
+                  >
+                  <input
+                    type="password"
+                    id="confirm-password"
+                    class="form-control"
+                    placeholder="Xác thực mật khẩu"
+                    required
+                  />
+                </div>
+                <div class="mb-3 form-check">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="terms"
+                    required
+                  />
+                  <label class="form-check-label" for="terms"
+                    >Tôi đồng ý với điều khoản và chính sách bảo mật</label
+                  >
+                </div>
+                <button type="submit" class="btn text-cus btn-warning w-100">
+                  Đăng Ký
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <%- include('./components/footer') %>
+
+    <!-- COPYRIGHT SECTION -->
+    <div class="copyright">Copyright 2023</div>
+    <!-- END COPYRIGHT SECTION -->
+
+    <!-- SCRIPT -->
+    <!-- JQUERY -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <!-- OWL CAROUSEL -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+      integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+      crossorigin="anonymous"
+    ></script>
+    <!-- APP SCRIPT -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./Home/app.js"></script>
+    <script src="./Auth/auth.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

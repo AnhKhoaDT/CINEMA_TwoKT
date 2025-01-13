@@ -1,0 +1,55 @@
+.cine-chose {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Canh giữa theo chiều ngang */
+    margin-top: 20px;
+    gap: 10px; /* Khoảng cách giữa các phần tử */
+}
+
+.cine-chose h1 {
+    font-size: 60px;
+    margin: 0;
+}
+
+#cine-box {
+    width: 600px; /* Chiều rộng */
+    height: 60px; /* Chiều cao */
+    font-size: 16px; /* Kích thước chữ */
+    border: 1px solid #ccc; /* Viền */
+    border-radius: 5px; /* Bo góc */
+    background-color: #f9f9f9; /* Màu nền */
+    font-size: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+
+@media (max-width: 768px) {
+    #cine-box {
+        width: 100%; /* Chiều rộng nhỏ hơn cho màn hình điện thoại */
+        height: 35px; /* Chiều cao nhỏ hơn */
+        font-size: 14px; /* Giảm kích thước chữ */
+        padding: 4px; /* Điều chỉnh khoảng cách bên trong */
+    }
+
+    .cine-chose h1 {
+        font-size: 18px; /* Chữ nhỏ hơn */
+    }
+
+    .cine-chose {
+        gap: 8px; /* Giảm khoảng cách giữa các phần tử */
+    }
+}
+
+/* Thiết lập giao diện cho màn hình rất nhỏ (dưới 480px) */
+@media (max-width: 480px) {
+    #cine-box {
+        width: 100%; /* Rất nhỏ cho màn hình siêu nhỏ */
+        font-size: 12px;
+        height: 30px;
+    }
+
+    .cine-chose h1 {
+        font-size: 16px;
+    }
+}

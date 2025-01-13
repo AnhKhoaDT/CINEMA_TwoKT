@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies</title>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="x-icon" href="./assets/movie logo.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap" rel="stylesheet">
+    <!-- OWL CAROUSEL -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" />
+    <!-- BOX ICONS -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./Home/app.css">
+    <link rel="stylesheet" href="./Movies/movieList.css">
+    <link rel="stylesheet" href="./Home/grid.css">
+
+</head>
+<body>
+    <%- include('./components/navbar') %> 
+
+    <!--List-->
+    <div class="container">
+        <div class="List-container">
+            <!--Filter-->
+            <div class="filter-container">
+            <select id="filter">
+                <option value="all">All Ages</option>
+                <option value="7">7+</option>
+                <option value="13">13+</option>
+                <option value="18">18+</option>
+            </select>
+            <select id="filter">
+                <option value="all">ALL Rating</option>
+                <option value="1">1</option>
+                <option value="3">3</option>
+                <option value="5">5</option>
+                <option value="7">7</option>
+                <option value="9">9</option>
+            </select>
+            <select id="filter">
+                <option value="all">All Genres</option>
+                <option value="action">Action</option>
+                <option value="comedy">Comedy</option>
+                <option value="drama">Drama</option>
+                <option value="horror">Horror</option>
+                <option value="romance">Romance</option>
+
+            </select>
+            <select id="filter">
+                <option value="all">All Statuses</option>
+                <option value="now-showing">Now Showing</option>
+                <option value="coming-soon">Coming Soon</option>
+            </select>
+            <button id="filter-button">Filter</button>
+        </div>
+        <!--END Filter-->
+        <!--Movies List-->
+        <div class="movie-list">
+        <% if (movies.length === 0) { %>
+            <div style="
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%; 
+                font-size: 18px;
+                text-align: center;
+            ">
+                Không có phim nào để hiển thị.
+        </div>
+        <% } else { %>
+            <% movies.forEach(movie => { %><!-- Lặp qua mảng phim từ server -->
+               
+                    <div class="movie-card">
+                        <div class="film-list">
+                            <img src="<%= movie.poster || 'default-image.jpg' %>" alt="<%= movie.title || 'Unknown Movie' %>" />
+                            <div class="overlay-list">
+                                <p><i class="bi bi-tags" style="color: yellow;"></i> <%= movie.genre %></p>
+                                <p><i class="bi bi-clock" style="color: yellow;"></i> <%= movie.duration %> phút</p>
+                                <p><i class="bi bi-globe-americas" style="color: yellow;"></i> <%= movie.nation %></p>
+                            </div>
+                        </div>
+                        <div class="title"><%= movie.title %></div>
+                        <div class="actions">
+                            <a href="<%movie.trailer%>"><i class="bi bi-play-circle-fill" style="margin-right: 5px;"></i>Xem Trailer</a>
+                            <button>Đặt Vé</button>
+                        </div>
+                    </div>
+            
+            <% }); %>
+        <% } %>
+        </div>
+        
+        <!--END Movies List-->
+        <!--Pagination-->
+        <div class="pagination">
+            <button class="pagination-button" data-action="first"><i class="bi bi-caret-left-fill"></i></button>
+            <button class="pagination-button" data-action="prev"><i class="bi bi-caret-left"></i></button>
+            <span>Trang <span id="current-page">1</span> trên <span id="total-pages">1</span></span>
+            <button class="pagination-button" data-action="next"><i class="bi bi-caret-right"></i></button>
+            <button class="pagination-button" data-action="last"><i class="bi bi-caret-right-fill"></i></button>
+        </div>
+        
+        <!--END Pagination-->
+        </div>
+    </div>
+    
+    <!--END List-->
+       <%- include('./components/footer') %> 
+
+    <!-- COPYRIGHT SECTION -->
+    <div class="copyright">
+        Copyright 2023  
+    </div>
+    <!-- END COPYRIGHT SECTION -->
+
+    <!-- SCRIPT -->
+    <!-- JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- OWL CAROUSEL -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous"></script>
+    <!-- APP SCRIPT -->
+    <script src="./Home/app.js"></script>
+    <script src="./Movies/filter.js"></script>
+</body>
+</html></select>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Quản lý đồ ăn/uống</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Bootstrap Icons -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+        <link rel="stylesheet" href="Ticket.css">
+        <link rel="stylesheet" href="../sideBar.css">
+    </head>    
+    <body>
+        <div class="layout-wrapper">
+            <div class="sidebar">
+                <h4 class="text-white">Admin</h4>
+                <!-- Dashboard Link -->
+                <a class="sidebar-link" href="#">
+                    <i class="bi bi-house"></i> Dashboard
+                </a>
+                <ul class="sidebar-list">
+                    <!-- Sidebar Item 1 -->
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="#" data-bs-toggle="collapse" data-bs-target="#menu1">
+                            <i class="bi bi-film"></i> Quản lý phim
+                        </a>
+                        <div class="sidebar-collapse collapse" id="menu1">
+                            <ul class="sidebar-sublist ps-3">
+                                <li><a href="#" class="sidebar-sublink">Danh sách phim</a></li>
+                                <li><a href="#" class="sidebar-sublink">Thêm phim</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- Sidebar Item 2 -->
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="#" data-bs-toggle="collapse" data-bs-target="#menu2">
+                            <i class="bi bi-geo-alt"></i> Quản lý rạp phim
+                        </a>
+                        <div class="sidebar-collapse collapse" id="menu2">
+                            <ul class="sidebar-sublist ps-3">
+                                <li><a href="#" class="sidebar-sublink">Danh sách rạp phim</a></li>
+                                <li><a href="#" class="sidebar-sublink">Thêm rạp phim</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- Sidebar Item 3 -->
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="#" data-bs-toggle="collapse" data-bs-target="#menu3">
+                            <i class="bi bi-calendar"></i> Quản lý lịch chiếu 
+                        </a>
+                        <div class="sidebar-collapse collapse" id="menu3">
+                            <ul class="sidebar-sublist ps-3">
+                                <li><a href="#" class="sidebar-sublink">Danh sách lịch chiếu</a></li>
+                                <li><a href="#" class="sidebar-sublink">Thêm lịch chiếu</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                <a class="sidebar-link" href="#">
+                    <i class="bi bi-camera-video"></i> Quản lý suất chiếu
+                </a>
+                <a class="sidebar-link" href="#">
+                    <i class="bi bi-percent"></i> Quản lý khuyến mãi
+                </a>
+                <a class="sidebar-link" href="#">
+                    <i class="bi bi-ticket-perforated"></i> Quản lý giá vé
+                </a>
+                <a class="sidebar-link" href="#">
+                    <i class="bi bi-cup-straw"></i> Quản lý đồ ăn và thức uống
+                </a>
+                <a class="sidebar-link" href="#">
+                    <i class="bi bi-receipt"></i> Quản lý đơn hàng
+                </a>
+                <!-- Logout Button -->
+                <a href="#" class="sidebar-logout">
+                    <i class="bi bi-box-arrow-right"></i> Đăng xuất
+                </a>
+            </div>
+            <div class="Ticket p-4">
+                <h4 class="mb-4">Chỉnh sửa giá vé</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Loại ghế</th>
+                            <th>Giá vé</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ghế đơn</td>
+                            <td>
+                                <input type="text" id="singleSeatPrice" class="form-control" value="100000" />
+                            </td>
+                            <td>
+                                <button class="btn btn-primary" onclick="updatePrice('single')">Cập nhật</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Ghế đôi</td>
+                            <td>
+                                <input type="text" id="doubleSeatPrice" class="form-control" value="200000" />
+                            </td>
+                            <td>
+                                <button class="btn btn-primary" onclick="updatePrice('double')">Cập nhật</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>            
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="Ticket.js"></script>
+    </body>
+</html>

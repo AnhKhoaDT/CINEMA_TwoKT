@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" type="x-icon" href="./images/movie logo.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TwoKT</title>
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- OWL CAROUSEL -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+      integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+      crossorigin="anonymous"
+    />
+    <!-- BOX ICONS -->
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="pay.css" rel="stylesheet" />
+    <!-- APP CSS -->
+    <link rel="stylesheet" href="grid.css" />
+    <link rel="stylesheet" href="app.css" />
+  </head>
+
+  <body>
+    <!-- NAV -->
+    <!-- NAV -->
+    <div class="nav-wrapper">
+      <div class="container">
+        <div class="nav">
+          <!-- Hàng đầu tiên -->
+          <div class="nav-top">
+            <a href="#" class="logo">
+              <i class="bx bx-movie-play bx-tada main-color"></i>Two<span
+                class="main-color"
+                >K</span
+              >T
+            </a>
+
+            <div class="col-4 d-none d-md-block">
+              <!-- Ẩn trên điện thoại -->
+              <button class="btn btn-custom">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  fill="currentColor"
+                  class="bi bi-ticket-perforated"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M4 4.85v.9h1v-.9zm7 0v.9h1v-.9zm-7 1.8v.9h1v-.9zm7 0v.9h1v-.9zm-7 1.8v.9h1v-.9zm7 0v.9h1v-.9zm-7 1.8v.9h1v-.9zm7 0v.9h1v-.9z"
+                  />
+                  <path
+                    d="M1.5 3A1.5 1.5 0 0 0 0 4.5V6a.5.5 0 0 0 .5.5 1.5 1.5 0 1 1 0 3 .5.5 0 0 0-.5.5v1.5A1.5 1.5 0 0 0 1.5 13h13a1.5 1.5 0 0 0 1.5-1.5V10a.5.5 0 0 0-.5-.5 1.5 1.5 0 0 1 0-3A.5.5 0 0 0 16 6V4.5A1.5 1.5 0 0 0 14.5 3zM1 4.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v1.05a2.5 2.5 0 0 0 0 4.9v1.05a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-1.05a2.5 2.5 0 0 0 0-4.9z"
+                  />
+                </svg>
+                <span>ĐẶT VÉ NGAY</span>
+              </button>
+              <button class="btn btn-custom">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  fill="currentColor"
+                  class="bi bi-cup-straw"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M13.902.334a.5.5 0 0 1-.28.65l-2.254.902-.4 1.927c.376.095.715.215.972.367.228.135.56.396.56.82q0 .069-.011.132l-.962 9.068a1.28 1.28 0 0 1-.524.93c-.488.34-1.494.87-3.01.87s-2.522-.53-3.01-.87a1.28 1.28 0 0 1-.524-.93L3.51 5.132A1 1 0 0 1 3.5 5c0-.424.332-.685.56-.82.262-.154.607-.276.99-.372C5.824 3.614 6.867 3.5 8 3.5c.712 0 1.389.045 1.985.127l.464-2.215a.5.5 0 0 1 .303-.356l2.5-1a.5.5 0 0 1 .65.278M9.768 4.607A14 14 0 0 0 8 4.5c-1.076 0-2.033.11-2.707.278A3.3 3.3 0 0 0 4.645 5c.146.073.362.15.648.222C5.967 5.39 6.924 5.5 8 5.5c.571 0 1.109-.03 1.588-.085zm.292 1.756C9.445 6.45 8.742 6.5 8 6.5c-1.133 0-2.176-.114-2.95-.308a6 6 0 0 1-.435-.127l.838 8.03c.013.121.06.186.102.215.357.249 1.168.69 2.438.69s2.081-.441 2.438-.69c.042-.029.09-.094.102-.215l.852-8.03a6 6 0 0 1-.435.127 9 9 0 0 1-.89.17zM4.467 4.884s.003.002.005.006zm7.066 0-.005.006zM11.354 5a3 3 0 0 0-.604-.21l-.099.445.055-.013c.286-.072.502-.149.648-.222"
+                  />
+                </svg>
+                <span>ĐẶT BẮP NƯỚC</span>
+              </button>
+            </div>
+            <div class="col-3 d-none me-5 d-md-block">
+              <!-- Ẩn trên điện thoại -->
+              <div class="input-group search-container">
+                <input
+                  type="text"
+                  class="form-control search-input"
+                  placeholder="Tìm phim, rạp"
+                />
+                <span class="input-group-text bg-white border-0 search-icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    class="bi bi-search"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"
+                    />
+                  </svg>
+                </span>
+              </div>
+            </div>
+
+            <ul class="nav-menu" id="nav-menu">
+              <li>
+                <a
+                  href="login_signup.html"
+                  class="btn btn-hover mx-2 btn-signin"
+                >
+                  <span>Sign in</span>
+                </a>
+              </li>
+            </ul>
+
+            <!-- MOBILE MENU TOGGLE -->
+            <div class="hamburger-menu" id="hamburger-menu">
+              <div class="hamburger"></div>
+            </div>
+          </div>
+          <!-- Hàng thứ hai -->
+          <div class="nav-bottom">
+            <ul class="nav-menu" id="nav-menu-second">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="#">Movies</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="about.html">About</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--content-->
+    <!-- Phần thanh toán -->
+    <section class="checkout checkout-customer ht">
+      <div class="container">
+        <div class="checkout-customer-wr">
+          <div class="checkout-customer-heading sec-heading" data-aos="fade-up">
+            <h2 class="heading !text-center min-[700px]:!text-left">
+              Trang thanh toán
+            </h2>
+            <h3 class="heading !text-center min-[700px]:!text-left">
+              Thanh Toán
+            </h3>
+          </div>
+          <div class="checkout-customer-content row">
+            <div class="checkout-cus-left col col-6" data-aos="fade-up">
+              <div class="form-payment">
+                <div class="popup popup-noti">
+                  <div class="popup-overlay"></div>
+                  <div class="popup-main">
+                    <div class="popup-main-wrapper">
+                      <div class="popup-over">
+                        <div class="popup-wrapper">
+                          <div class="popup-noti-wr">
+                            <p class="popup-noti-des">
+                              Mã khuyến mãi không tồn tại!
+                            </p>
+                            <div class="popup-noti-ctr">
+                              <div class="btn btn--outline">
+                                <span class="txt">OK</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="popup-close popupClose">
+                      <i class="fas fa-times icon"></i>
+                    </div>
+                  </div>
+                </div>
+                <form class="form" action="">
+                  <div class="form-list">
+                    <div class="form-it inner-radio inner-radio-white">
+                      <input
+                        class="form-control"
+                        type="radio"
+                        id="payment1"
+                        name="input-checkout-payment"
+                        hidden=""
+                      />
+                      <label class="form-label" for="payment1">
+                        <span class="img"
+                          ><img src="./assets/momo.png" alt=""
+                        /></span>
+                        <p class="text">Thanh toán qua Momo</p>
+                      </label>
+                    </div>
+                    <div class="form-it inner-radio inner-radio-white">
+                      <input
+                        class="form-control"
+                        type="radio"
+                        id="payment2"
+                        name="input-checkout-payment"
+                        hidden=""
+                      />
+                      <label class="form-label" for="payment2">
+                        <span class="img"
+                          ><img src="./assets/zalo.png" alt=""
+                        /></span>
+                        <p class="text">Thanh toán qua Zalo Pay</p>
+                      </label>
+                    </div>
+                    <div class="form-it inner-radio inner-radio-white">
+                      <input
+                        class="form-control"
+                        type="radio"
+                        id="payment3"
+                        name="input-checkout-payment"
+                        hidden=""
+                      />
+                      <label class="form-label" for="payment3">
+                        <span class="img"
+                          ><img src="./assets/bank.png" alt=""
+                        /></span>
+                        <p class="text">Thanh toán qua Ngân hàng</p>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="btn-discount">
+                    <span class="img"
+                      ><img src="./assets/discount.png " alt=""
+                    /></span>
+                    <div class="text">
+                      <p class="tt" style="font-size: 18px;">Chọn hoặc nhập mã giảm giá</p>
+                      <p class="note">Bạn đang có mã giảm giá</p>
+                    </div>
+                  </div>
+                  <div class="form-it btn-action">
+                    <div class="btn btn-submit btn--pri h-[41px]">Quay lại</div>
+                    <div class="btn btn-submit btn--pri h-[41px]">
+                      Thanh toán
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="popup popup-gg">
+                <div class="popup-overlay"></div>
+                <div class="popup-main">
+                  <div class="popup-main-wrapper">
+                    <div class="popup-over">
+                      <div class="popup-wrapper">
+                        <div class="popup-gg-wr">
+                          <div class="form-discount">
+                            <form>
+                              <div class="form-list">
+                                <div class="subtitle">Áp dụng ưu đãi</div>
+                                <div class="form-it popup-gg-search">
+                                  <div class="input">
+                                    <input
+                                      name="inputDiscount"
+                                      class="form-control re-input"
+                                      type="text"
+                                      placeholder="Nhập mã khuyến mãi của bạn"
+                                      id="contact-main-fName"
+                                      value=""
+                                      data-listener-added_9f4c90f2="true"
+                                    />
+                                  </div>
+                                </div>
+                                <div class="form-it list-discount">
+                                  <div class="inner-radio not-action">
+                                    <label class="form-label">
+                                      <div class="content">
+                                        <p class="tt">C'Ten: 45k phim 2d</p>
+                                        <p class="note">
+                                          Xem phim trước 10h sáng và sau 10h tối
+                                        </p>
+                                      </div>
+                                    </label>
+                                  </div>
+                                  <div class="inner-radio not-action">
+                                    <label class="form-label">
+                                      <div class="content">
+                                        <p class="tt">C'Member: 45k phim 2d</p>
+                                        <p class="note">
+                                          Thành viên Cinestar vào ngày thứ 4
+                                          hàng tuần
+                                        </p>
+                                      </div>
+                                    </label>
+                                  </div>
+                                  <div class="inner-radio not-action">
+                                    <label class="form-label">
+                                      <div class="content">
+                                        <p class="tt">C'Monday: 45k phim 2d</p>
+                                        <p class="note">
+                                          Các suất chiếu vào ngày thứ 2 hàng
+                                          tuần
+                                        </p>
+                                      </div>
+                                    </label>
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+                            <a
+                              class="text-[#0F172A] w-full flex justify-center mt-[4px] underline"
+                              href="/chuong-trinh-khuyen-mai/"
+                            >
+                              Chú ý mọi chi tiết khuyến mãi</a
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="popup-close">
+                  <i class="fas fa-times icon"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="checkout-cus-right col col-6" data-aos="fade-up">
+              <div class="form-checkout-cus">
+                <div class="form-main">
+                  <div class="inner-info">
+                    <div class="inner-info-row"><p class="tt"></p></div>
+                  </div>
+                  <div class="inner-info">
+                    <div class="inner-info-row cinestar-br">
+                      <p class="ct"><%= cinema.name %></p>
+                      <p class="dt"><%= cinema.address %></p>
+                    </div>
+                  </div>
+                  <div class="inner-info">
+                    <div class="inner-info-row corn-drink">
+                      <p class="tt" style="color: #f1c40f"><%= snack.name %></p>
+                      <p class="ct"><%= snack.quantity %></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-footer">
+                  <div class="inner-info">
+                    <div class="inner-info-row total">
+                      <p class="tt">Số tiền cần thanh toán</p>
+                      <p class="ct"><%= totalAmount %></p>
+                    </div>
+                  </div>
+                </div>
+                <button class="btn btn-submit btn--pri hide-small" (click)="payment()">Thanh toán</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--footer-->
+
+    <!-- FOOTER SECTION -->
+    <footer class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-4 col-md-6 col-sm-12">
+            <div class="content">
+              <a href="#" class="logo">
+                <i class="bx bx-movie-play bx-tada main-color"></i>Fl<span
+                  class="main-color"
+                  >i</span
+                >x
+              </a>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut
+                veniam ex quos hic id nobis beatae earum sapiente! Quod ipsa
+                exercitationem officiis non error illum minima iusto et.
+                Dolores, quibusdam?
+              </p>
+              <div class="social-list">
+                <a href="#" class="social-item">
+                  <i class="bx bxl-facebook"></i>
+                </a>
+                <a href="#" class="social-item">
+                  <i class="bx bxl-twitter"></i>
+                </a>
+                <a href="#" class="social-item">
+                  <i class="bx bxl-instagram"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-8 col-md-6 col-sm-12">
+            <div class="row">
+              <div class="col-3 col-md-6 col-sm-6">
+                <div class="content">
+                  <p><b>Flix</b></p>
+                  <ul class="footer-menu">
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">My profile</a></li>
+                    <li><a href="#">Pricing plans</a></li>
+                    <li><a href="#">Contacts</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-3 col-md-6 col-sm-6">
+                <div class="content">
+                  <p><b>Browse</b></p>
+                  <ul class="footer-menu">
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">My profile</a></li>
+                    <li><a href="#">Pricing plans</a></li>
+                    <li><a href="#">Contacts</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-3 col-md-6 col-sm-6">
+                <div class="content">
+                  <p><b>Help</b></p>
+                  <ul class="footer-menu">
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">My profile</a></li>
+                    <li><a href="#">Pricing plans</a></li>
+                    <li><a href="#">Contacts</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-3 col-md-6 col-sm-6">
+                <div class="content">
+                  <p><b>Download app</b></p>
+                  <ul class="footer-menu">
+                    <li>
+                      <a href="#">
+                        <img src="./images/google-play.png" alt="" />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <img src="./images/app-store.png" alt="" />
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- END FOOTER SECTION -->
+
+    <!-- COPYRIGHT SECTION -->
+    <div class="copyright">Copyright 2023</div>
+    <!-- END COPYRIGHT SECTION -->
+
+    <!-- SCRIPT -->
+    <!-- JQUERY -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <!-- OWL CAROUSEL -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+      integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+      crossorigin="anonymous"
+    ></script>
+    <!-- APP SCRIPT -->
+    <script src="app.js"></script>
+  </body>
+</html>
