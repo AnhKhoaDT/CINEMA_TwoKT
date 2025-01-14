@@ -57,9 +57,25 @@ const unBookSeat = async (req, res) => {
   }
 };
 
+const getSeatByTheaterDataID = async (req, res) => {
+  try {
+    const theaterDataID = req.params.id;
+    console.log(theaterDataID);
+
+    const seats = await seatService.getSeatByTheaterDataID(theaterDataID);
+    res.status(200).send(seats);
+  } catch (error) {
+    if (error instanceof customError) {
+      return res.status(error.statusCode).json({ error: error.message });
+    }
+    return res.status(500).json({ error: error.message });
+  }
+};
+
 module.exports = {
   holdSeat,
   unHoldSeat,
   bookSeat,
   unBookSeat,
+  getSeatByTheaterDataID,
 };

@@ -76,22 +76,22 @@ router.get("/movielist", async (req, res) => {
 router.get("/booking/:id", async (req, res) => {
   try {
     const movieId = req.params.id; // Lấy id từ URL
-    console.log(movieId);
 
     const response_movie = await axios.get(
       `${WEB_URL}/api/movies/detail/${movieId}`
     );
-    const schedule = await axios.get(`${WEB_URL}/api/schedule/${movieId}`);
-    console.log(schedule.data.schedule);
+
+    const schedule_data = await axios.get(`${WEB_URL}/api/schedule/${movieId}`);
 
     const response_showtime = await axios.get(
-      `${WEB_URL}/api/showtimes/${movieId}`
+      `${WEB_URL}/api/showtimes/${schedule_data.data.schedules._id}`
     );
-    console.log(`${WEB_URL}/api/showtimes/${movieId}`);
-    //console.log(response_movie.data.movie);
-    // Kiểm tra cấu trúc dữ liệu trả về
 
     console.log(response_showtime.data.showtimes);
+    //console.log(response_showtime.data.showtimes);
+
+    //console.log(response_movie.data.movie);
+    // Kiểm tra cấu trúc dữ liệu trả về
 
     res.render("booking", {
       movie: response_movie.data.movie,
@@ -99,6 +99,7 @@ router.get("/booking/:id", async (req, res) => {
     }); // Trả về trang đặt vé
   } catch (error) {
     console.error(error);
+    res.status(500).send("Đã xảy ra lỗi khi tải trang đặt vé.");
   }
 });
 

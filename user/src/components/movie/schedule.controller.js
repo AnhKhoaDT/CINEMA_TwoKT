@@ -22,7 +22,7 @@ const getMovieSchedules = async (req, res) => {
     const movieID = req.params.movieID;
 
     const schedules = await scheduleService.getMovieSchedules(movieID);
-    res.status(500).json({ schedules });
+    res.status(200).json({ schedules });
   } catch (error) {
     if (error instanceof customError) {
       return res.status(error.statusCode).json({ error: error.message });

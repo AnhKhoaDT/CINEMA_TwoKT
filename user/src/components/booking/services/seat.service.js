@@ -128,6 +128,24 @@ const unBookSeat = async (seatID) => {
   }
 };
 
+const getSeatByTheaterDataID = async (theaterDataID) => {
+  try {
+    console.log(theaterDataID);
+    const seats = await seatModel.find({ theaterDataID: theaterDataID });
+
+    if (!seats) {
+      throw new CustomError(`Not found in ${theaterDataID}`, 404);
+    }
+
+    return seats;
+  } catch (error) {
+    if (error instanceof CustomError) {
+      throw error;
+    }
+    throw new Error(error);
+  }
+};
+
 module.exports = {
   addSeat,
   addManySeats,
@@ -135,4 +153,5 @@ module.exports = {
   unHoldSeat,
   bookSeat,
   unBookSeat,
+  getSeatByTheaterDataID,
 };
