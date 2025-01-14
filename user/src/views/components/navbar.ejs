@@ -41,13 +41,35 @@
                         </span>
                     </div>
                 </div>
-                
-                   
-                        <li>
-                            <a href="/register" class="btn btn-hover mx-2 btn-signin">
-                                <span>Sign in</span>
-                            </a>
-                        </li>
+                <li class="nav-item relative group">
+                    <% if (user) { %>
+                      <span id="userMenuButton" class="nav-link cursor-pointer font-bold text-lg"><%= user.name %></span>
+                      <!-- Thông tin cá nhân hiển thị khi hover -->
+                      <div  id="userMenu" class="hidden absolute top-full left-0 w-48 bg-white text-black shadow-lg p-4 rounded-lg group-hover:block">
+                        <div class="text-sm mb-2">
+                          <strong>Họ và tên:</strong> <%= user.name %>
+                        </div>
+                        <div class="text-sm mb-2">
+                          <strong>Email:</strong> <%= user.email %>
+                        </div>
+                        <div>
+                          <a href="/info" class="text-blue-500 hover:text-blue-600 text-sm underline">
+                            Thông tin cá nhân
+                          </a>
+                        </div>
+                        <div>
+                          <a href="javascript:void(0)" id="logoutButton" class="text-black-600 hover:text-blue-600 text-sm underline">
+                            Đăng xuất
+                          </a>
+                          
+                        </div>
+                      </div>
+                    <% } else { %>
+                      <a href="/register" class="btn btn-hover mx-2 btn-signin">
+                        <span>Đăng nhập</span>
+                      </a>
+                    <% } %>
+                  </li>
                     
                 
                        <!-- MOBILE MENU TOGGLE -->
@@ -71,3 +93,5 @@
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="./Home/app.js"></script>

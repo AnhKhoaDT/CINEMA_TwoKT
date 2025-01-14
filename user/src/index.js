@@ -1,7 +1,7 @@
 const express = require("express");
 
 const axios = require("axios");
-
+axios.defaults.withCredentials = true;
 const router = express.Router();
 
 const { WEB_URL } = require("./config/env.js");
@@ -29,8 +29,12 @@ router.use("/api/schedule", scheduleRoutes); // lấy tất cả lịch chiếu
 router.get("/", async (req, res) => {
   try {
     const response = await axios.get(`${WEB_URL}/api/movies`);
-
-    res.render("index", { movies: response.data.movies });
+    console.log("User: ", req.session.user); 
+    res.render("index", { 
+      movies: response.data.movies, 
+      user: req.session.user || null 
+    });
+    
   } catch (error) {
     console.error(error);
   }
@@ -42,7 +46,10 @@ router.get("/detail/:id", async (req, res) => {
 
     const response = await axios.get(`${WEB_URL}/api/movies/detail/${movieId}`);
     console.log(response.data.movie); // Kiểm tra cấu trúc dữ liệu trả về
-    res.render("movies", { movie: response.data.movie }); // Trả về chi tiết của một phim
+    res.render("movies", { 
+      movie: response.data.movie, 
+      user: req.session.user || null 
+    });
   } catch (error) {
     console.error(error);
   }
@@ -50,7 +57,10 @@ router.get("/detail/:id", async (req, res) => {
 
 router.get("/register", (req, res) => {
   try {
-    res.render("auth"); // Truyền activeTab để xác định tab hiển thị
+   
+    res.render("auth", { 
+      user: req.session.user || null 
+    });
   } catch (error) {
     console.error(error);
   }
@@ -58,15 +68,18 @@ router.get("/register", (req, res) => {
 
 router.get("/movielist", async (req, res) => {
   try {
-    const response = await axios.get(`${WEB_URL}/movies/query`);
-    console.log(response.data); // Kiểm tra cấu trúc dữ liệu trả về
-
+    const response = await axios.get(`${WEB_URL}api/movies/query`);
     const moviesData = response.data.movies || {};
     const movies = moviesData.movies || [];
-    const page = moviesData.page || 1; // Trang hiện tại từ server
-    const totalPages = moviesData.totalPages || 1; // Tổng số trang từ server
+    const page = moviesData.page || 1;
+    const totalPages = moviesData.totalPages || 1;
 
-    res.render("movieList", { movies, page, totalPages });
+    res.render("movieList", { 
+      movies, 
+      page, 
+      totalPages, 
+      user: req.session.user || null 
+    });
   } catch (error) {
     console.error("Lỗi khi lấy danh sách phim:", error.message);
     res.status(500).send("Đã xảy ra lỗi khi tải danh sách phim.");
@@ -75,31 +88,49 @@ router.get("/movielist", async (req, res) => {
 
 router.get("/booking/:id", async (req, res) => {
   try {
-    const movieId = req.params.id; // Lấy id từ URL
-    console.log(movieId);
+    const movieId = req.params.id;
 
-    const response_movie = await axios.get(
-      `${WEB_URL}/api/movies/detail/${movieId}`
-    );
-    const schedule = await axios.get(`${WEB_URL}/api/schedule/${movieId}`);
-    console.log(schedule.data.schedule);
+    const response_movie = await axios.get(`${WEB_URL}/api/movies/detail/${movieId}`);
+    const response_showtime = await axios.get(`${WEB_URL}/api/showtimes/${movieId}`);
 
-    const response_showtime = await axios.get(
-      `${WEB_URL}/api/showtimes/${movieId}`
-    );
-    console.log(`${WEB_URL}/api/showtimes/${movieId}`);
-    //console.log(response_movie.data.movie);
-    // Kiểm tra cấu trúc dữ liệu trả về
-
-    console.log(response_showtime.data.showtimes);
-
-    res.render("booking", {
-      movie: response_movie.data.movie,
-      showtimes: response_showtime.data.showtimes,
-    }); // Trả về trang đặt vé
+    res.render("booking", { 
+      movie: response_movie.data.movie, 
+      showtimes: response_showtime.data.showtimes, 
+      user: req.session.user || null 
+    });
   } catch (error) {
     console.error(error);
   }
 });
+
+
+const checkLoginStatus = async () => {
+  try {
+    const response = await axios.get("http://localhost/api/auth/status", { withCredentials: true });
+    if (response.data.isAuthenticated) {
+      console.log("User is authenticated:", response.data.user);
+    } else {
+      console.log("User is not authenticated.");
+    }
+  } catch (error) {
+    console.error("Error checking login status:", error.response?.data || error.message);
+  }
+};
+
+router.get("/contact", (req, res) => {
+  try {
+   
+    res.render("contact", { 
+      user: req.session.user || null 
+    });
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+checkLoginStatus();
+
+
+
 
 module.exports = router;
