@@ -33,6 +33,7 @@ const createTheaterData = async (theaterData) => {
           type: row.type, // Loại ghế (single/double)
           col: seatNumber, // Số ghế trong hàng
           status: "available", // Trạng thái ghế mặc định là available
+          price: type === "double" ? 120000 : 80000, // Giá vé mặc định
         }));
       } else {
         console.error(`Invalid seatNumbers in row ${row.row}`);

@@ -11,6 +11,7 @@ const onwerSchema = new mongoose.Schema({
   },
   expireIn: {
     type: Date,
+    deffault: null,
   },
 });
 

@@ -13,6 +13,8 @@ const movieRoutes = require("./components/movie/movie.routes");
 const showtimeRoutes = require("./components/movie/showtime.routes");
 const theaterRoutes = require("./components/cinema/theater.routes");
 const bookingRoutes = require("./components/booking/booking.routes");
+const cinemaRoutes = require("./components/cinema/cinema.routes");
+const scheduleRoutes = require("./components/movie/schedule.routes");
 
 // User routes
 router.use("/api/users", userRoutes);
@@ -21,6 +23,8 @@ router.use("/api/movies", movieRoutes); // lấy tất cả phim
 router.use("/api/showtimes", showtimeRoutes); // lấy tất cả suất chiếu
 router.use("/api/theaters", theaterRoutes); // lấy tất cả rạp
 router.use("/api/bookticket", bookingRoutes); // đặt vé
+router.use("/api/cinema", cinemaRoutes); // lấy tất cả rạp
+router.use("/api/schedule", scheduleRoutes); // lấy tất cả lịch chiếu
 
 router.get("/", async (req, res) => {
   try {
@@ -72,10 +76,27 @@ router.get("/movielist", async (req, res) => {
 router.get("/booking/:id", async (req, res) => {
   try {
     const movieId = req.params.id; // Lấy id từ URL
+    console.log(movieId);
 
-    const response = await axios.get(`${WEB_URL}/api/movies/detail/${movieId}`);
+    const response_movie = await axios.get(
+      `${WEB_URL}/api/movies/detail/${movieId}`
+    );
+    const schedule = await axios.get(`${WEB_URL}/api/schedule/${movieId}`);
+    console.log(schedule.data.schedule);
 
-    res.render("booking", { movie: response.data.movie }); // Trả về trang đặt vé
+    const response_showtime = await axios.get(
+      `${WEB_URL}/api/showtimes/${movieId}`
+    );
+    console.log(`${WEB_URL}/api/showtimes/${movieId}`);
+    //console.log(response_movie.data.movie);
+    // Kiểm tra cấu trúc dữ liệu trả về
+
+    console.log(response_showtime.data.showtimes);
+
+    res.render("booking", {
+      movie: response_movie.data.movie,
+      showtimes: response_showtime.data.showtimes,
+    }); // Trả về trang đặt vé
   } catch (error) {
     console.error(error);
   }
