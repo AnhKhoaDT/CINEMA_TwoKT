@@ -1,0 +1,11 @@
+[
+    {"row":"A","type":"single","seatNumbers":[1,2,3,4,5,6,7,8,9,10]},
+    {"row":"B","type":"single","seatNumbers":[1,2,3,4,5,6,7,8,9,10]},
+    {"row":"C","type":"single","seatNumbers":[1,2,3,4,5,6,7,8,9,10]},
+    {"row":"D","type":"single","seatNumbers":[1,2,3,4,5,6,7,8,9,10]},
+    {"row":"E","type":"single","seatNumbers":[1,2,3,4,5,6,7,8,9,10]},
+    {"row":"F","type":"single","seatNumbers":[1,2,3,4,5,6,7,8,9,10]},
+    {"row":"G","type":"single","seatNumbers":[1,2,3,4,5,6,7,8,9,10]},
+    {"row":"H","type":"single","seatNumbers":[1,2,3,4,5,6,7,8,9,10]},
+    {"row":"I","type":"double","seatNumbers":[1,2,3,4,5,6,7,8,9,10]}
+]

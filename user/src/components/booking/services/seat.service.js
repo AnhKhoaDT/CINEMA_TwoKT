@@ -36,6 +36,7 @@ const holdSeat = async (seatID, userID) => {
       throw new CustomError(`Seat ${seatID} is already hold`, 400);
     }
     seat.owner.userID = userID;
+
     seat.owner.expireIn = new Date().setMinutes(new Date().getMinutes() + 5);
 
     return await seat.save();
@@ -122,4 +123,8 @@ const unBookSeat = async (seatID) => {
 module.exports = {
   addSeat,
   addManySeats,
+  holdSeat,
+  unHoldSeat,
+  bookSeat,
+  unBookSeat,
 };

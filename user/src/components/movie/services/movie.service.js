@@ -90,7 +90,7 @@ const getUpcomingMovies = async () => {
 
 const getMovieById = async (id) => {
   try {
-    const movie = await movieModel.findById(id).populate("showtimes");
+    const movie = await movieModel.findById(id);
 
     if (!movie) {
       throw new CustomError("Movie not found", 404);
@@ -139,8 +139,7 @@ const filterMovies = async (filter) => {
     if (search) {
       query.title = { $regex: search, $options: "i" };
     }
-    const totalMovies = await movieModel.countDocuments(query);
-    
+
     const movies = await movieModel
       .find(query)
       .limit(limit)
@@ -149,11 +148,7 @@ const filterMovies = async (filter) => {
     if (!movies) {
       throw new CustomError("No movies found", 404);
     }
-    return {
-      movies,
-      totalPages: Math.ceil(totalMovies / limit),
-      page
-    };
+    return movies;
   } catch (error) {
     if (error instanceof CustomError) {
       throw error;

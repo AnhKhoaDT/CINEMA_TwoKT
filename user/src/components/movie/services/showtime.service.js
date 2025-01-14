@@ -1,30 +1,8 @@
 const showtimeModel = require("../models/showtime.model");
-const theaterDataService = require("../../theater/services/theaterData.service");
+const theaterDataService = require("../../booking/services/theaterData.service");
 const cinemaService = require("../../cinema/cinema.service");
 
 const CustomError = require("../../../utils/CustomError");
-
-//showtimeInput
-// {
-//   "scheduleID": "60f1b9b3b3b3b32f1c8f1b3b",
-//   "cinemaID": "60f1b9b3b3b3b32f1c8f1b3b",
-//   "showAt": {
-//     "startTime": "12:00:00",
-//     "endTime": "2021-07-17T10:00:00.000Z",
-//     "theaterID": "60f1b9b3b3b3b32f1c8f1b3b"
-//   }
-// }
-
-// showtimeObject
-// {
-//   "scheduleID": "60f1b9b3b3b3b32f1c8f1b3b",
-//   "cinemaID": "60f1b9b3b3b3b32f1c8f1b3b",
-//   "showAt": {
-//     "startTime": "2021-07-17T08:00:00.000Z",
-//     "endTime": "2021-07-17T10:00:00.000Z",
-//     "theaterDataID": "60f1b9b3b3b3b32f1c8f1b3b"
-//   }
-// }
 
 const addShowtime = async (showtimeInput) => {
   try {
@@ -47,7 +25,7 @@ const addShowtime = async (showtimeInput) => {
     const theaterData = await theaterDataService.createTheaterData({
       theaterID,
       showDate: new Date(startTime).setHours(0, 0, 0, 0), // Chỉ giữ lại ngày
-      timeRanges: [{ start: startTime, end: endTime }], // Thêm khoảng thời gian mới
+      timeRanges: { start: startTime, end: endTime }, // Thêm khoảng thời gian mới
     });
 
     // Tạo buổi chiếu mới
@@ -93,7 +71,7 @@ const isValidShowtime = async (showtime) => {
 
   // Đảm bảo ngày được so sánh chính xác (set về 00:00:00)
   const showDate = new Date(startTime);
-  showDate.setHours(0, 0, 0, 0);
+  showDate.setHours(0, 0, 0, 1);
 
   // Lấy dữ liệu lịch chiếu của rạp trong ngày
   const theaterData = await theaterDataService.queryTheaterData({

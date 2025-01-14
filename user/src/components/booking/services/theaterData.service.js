@@ -1,6 +1,6 @@
 const theaterDataModel = require("../models/theaterData.model");
 const { addManySeats } = require("./seat.service");
-const theaterModel = require("../models/theater.model");
+const theaterModel = require("../../cinema/theater.model");
 const showtimeModel = require("../../movie/models/showtime.model");
 
 const CustomError = require("../../../utils/CustomError");
@@ -13,7 +13,6 @@ const createTheaterData = async (theaterData) => {
     // check theaterData is valid
     // check theaterID and showtimeID is exist in db
     const theaterID = theaterData.theaterID;
-    const showtimeID = theaterData.showtimeID;
 
     const theater = await theaterModel.findById(theaterID);
 
@@ -21,26 +20,25 @@ const createTheaterData = async (theaterData) => {
       throw new CustomError("Theater not found", 404);
     }
 
-    const showtime = await showtimeModel.findById(showtimeID);
-
-    if (!showtime) {
-      throw new CustomError("Showtime not found", 404);
-    }
-
     const newTheaterData = await new theaterDataModel(theaterData).save();
 
     // add default seats data
-    const seats = defaultSeatsData.flatMap((row) => {
-      return row.seats.map((seatNumber) => ({
-        theaterDataID: newTheaterData._id,
-        row: row.row,
-        type: row.type,
-        col: seatNumber,
-        status: "available", // Trạng thái mặc định
-      }));
-    });
 
-    console.log(seats);
+    const seats = defaultSeatsData.flatMap((row) => {
+      // Kiểm tra nếu seatNumbers tồn tại và là một mảng
+      if (Array.isArray(row.seatNumbers)) {
+        return row.seatNumbers.map((seatNumber) => ({
+          theaterDataID: newTheaterData._id, // ID của phòng chiếu
+          row: row.row, // Hàng ghế
+          type: row.type, // Loại ghế (single/double)
+          col: seatNumber, // Số ghế trong hàng
+          status: "available", // Trạng thái ghế mặc định là available
+        }));
+      } else {
+        console.error(`Invalid seatNumbers in row ${row.row}`);
+        return []; // Nếu không có seatNumbers hợp lệ, trả về mảng rỗng
+      }
+    });
 
     await addManySeats(seats);
 
@@ -58,24 +56,22 @@ const queryTheaterData = async (query) => {
     const theaterID = query.theaterID;
     const showDate = query.showDate;
 
-    const theaterData = await theaterDataModel
-      .find({ theaterID, showDate });
-    
+    const theaterData = await theaterDataModel.find({ theaterID, showDate });
+
     if (!theaterData) {
       throw new CustomError("Theater data not found", 404);
     }
 
     return theaterData;
-  }
-  catch (error) {
+  } catch (error) {
     if (error instanceof CustomError) {
       throw error;
     }
     throw new Error(error);
   }
-}
-
+};
 
 module.exports = {
   createTheaterData,
+  queryTheaterData,
 };

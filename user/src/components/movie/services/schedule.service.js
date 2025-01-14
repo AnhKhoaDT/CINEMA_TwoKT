@@ -1,14 +1,15 @@
 const scheduleModel = require("../models/schedule.model");
 const movieModel = require("../models/movie.model");
 const showtimeService = require("./showtime.service");
+const moment = require("moment");
 
 const CustomError = require("../../../utils/CustomError");
 
 const addSchedule = async (scheduleInput) => {
   try {
     const movieID = scheduleInput.movieID;
-    const date = scheduleInput.date;
-    const showtimes = scheduleInput.showtimes;
+    const date = moment(scheduleInput.date).utc().add(7, "hours").toDate();
+    console.log(date);
 
     const movie = await movieModel.findById(movieID);
 
@@ -17,6 +18,11 @@ const addSchedule = async (scheduleInput) => {
     }
 
     const schedule = new scheduleModel({ movieID, date });
+
+    if (await isTaken(movieID, date)) {
+      throw new CustomError("Schedule already exists", 400);
+    }
+
     const newSchedule = await schedule.save();
 
     if (!newSchedule) {
@@ -45,8 +51,19 @@ const getMovieSchedules = async (movieId) => {
   }
 };
 
+const isTaken = async (movieID, date) => {
+  try {
+    const schedule = await scheduleModel.findOne({ movieID, date });
+    console.log(movieID);
+    console.log(date);
+    console.log(schedule);
+    return schedule ? true : false;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
 module.exports = {
   addSchedule,
-
   getMovieSchedules,
 };

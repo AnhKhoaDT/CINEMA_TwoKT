@@ -11,11 +11,9 @@ const theaterDataModel = new mongoose.Schema({
   timeRanges: {
     start: {
       type: Date,
-      required: true,
     },
     end: {
       type: Date,
-      required: true,
     },
   },
   showDate: {
