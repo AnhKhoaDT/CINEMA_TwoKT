@@ -8,75 +8,12 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <!-- Bootstrap Icons -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-        <link rel="stylesheet" href="Show.css">
-        <link rel="stylesheet" href="../sideBar.css">
+        <link rel="stylesheet" href="/ShowSchedule/Show.css">
+        <link rel="stylesheet" href="/sideBar.css">
     </head>    
     <body>
         <div class="layout-wrapper">
-            <div class="sidebar">
-                <h4 class="text-white">Admin</h4>
-                <!-- Dashboard Link -->
-                <a class="sidebar-link" href="#">
-                    <i class="bi bi-house"></i> Dashboard
-                </a>
-                <ul class="sidebar-list">
-                    <!-- Sidebar Item 1 -->
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="#" data-bs-toggle="collapse" data-bs-target="#menu1">
-                            <i class="bi bi-film"></i> Quản lý phim
-                        </a>
-                        <div class="sidebar-collapse collapse" id="menu1">
-                            <ul class="sidebar-sublist ps-3">
-                                <li><a href="#" class="sidebar-sublink">Danh sách phim</a></li>
-                                <li><a href="#" class="sidebar-sublink">Thêm phim</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <!-- Sidebar Item 2 -->
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="#" data-bs-toggle="collapse" data-bs-target="#menu2">
-                            <i class="bi bi-geo-alt"></i> Quản lý rạp phim
-                        </a>
-                        <div class="sidebar-collapse collapse" id="menu2">
-                            <ul class="sidebar-sublist ps-3">
-                                <li><a href="#" class="sidebar-sublink">Danh sách rạp phim</a></li>
-                                <li><a href="#" class="sidebar-sublink">Thêm rạp phim</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <!-- Sidebar Item 3 -->
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="#" data-bs-toggle="collapse" data-bs-target="#menu3">
-                            <i class="bi bi-calendar"></i> Quản lý lịch chiếu 
-                        </a>
-                        <div class="sidebar-collapse collapse" id="menu3">
-                            <ul class="sidebar-sublist ps-3">
-                                <li><a href="#" class="sidebar-sublink">Danh sách lịch chiếu</a></li>
-                                <li><a href="#" class="sidebar-sublink">Thêm lịch chiếu</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-                <a class="sidebar-link" href="#">
-                    <i class="bi bi-camera-video"></i> Quản lý suất chiếu
-                </a>
-                <a class="sidebar-link" href="#">
-                    <i class="bi bi-percent"></i> Quản lý khuyến mãi
-                </a>
-                <a class="sidebar-link" href="#">
-                    <i class="bi bi-ticket-perforated"></i> Quản lý giá vé
-                </a>
-                <a class="sidebar-link" href="#">
-                    <i class="bi bi-cup-straw"></i> Quản lý đồ ăn và thức uống
-                </a>
-                <a class="sidebar-link" href="#">
-                    <i class="bi bi-receipt"></i> Quản lý đơn hàng
-                </a>
-                <!-- Logout Button -->
-                <a href="#" class="sidebar-logout">
-                    <i class="bi bi-box-arrow-right"></i> Đăng xuất
-                </a>
-            </div>
+            <%- include('./components/sidebar') %> 
             <div class="Show-schedule flex-grow-1 p-4">
                 <h2 class="mb-4">Danh sách lịch chiếu</h2>
                 <!-- Bộ lọc -->
@@ -168,6 +105,6 @@
             </div>                              
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="ShowSchedule.js"></script>
+        <script src="/ShowSchedule/ShowSchedule.js"></script>
     </body>
 </html>

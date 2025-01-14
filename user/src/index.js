@@ -73,6 +73,7 @@ router.get("/movielist", async (req, res) => {
   }
 });
 
+
 router.get("/booking/:id", async (req, res) => {
   try {
     const movieId = req.params.id; // Lấy id từ URL
@@ -90,6 +91,15 @@ router.get("/booking/:id", async (req, res) => {
     console.log(`${WEB_URL}/api/showtimes/${movieId}`);
     //console.log(response_movie.data.movie);
     // Kiểm tra cấu trúc dữ liệu trả về
+
+router.get('/paying', (req, res) => {
+    try {
+        res.render('paymethod'); // Truyền activeTab để xác định tab hiển thị
+    } catch (error) {
+        console.error(error);
+    }
+});
+
 
     console.log(response_showtime.data.showtimes);
 
