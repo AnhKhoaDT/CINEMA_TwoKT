@@ -11,11 +11,14 @@ const userRoutes = require('./components/user/user.routes');
 const authRoutes = require('./components/auth/auth.routes');
 const movieRoutes = require('./components/movie/movie.routes');
 const Movie = require('./components/movie/models/movie.model.js');
+const Cinema= require('./components/cinema/cinema.model.js')
+const cinemaRoutes= require('./components/cinema/cinema.routes.js')
 
 // User routes
 router.use('/users', userRoutes);
 router.use('/auth', authRoutes);
 router.use('/movies', movieRoutes);// lấy tất cả phim
+router.use('/cinemas',cinemaRoutes)
 
 router.get('/',async (req, res) => {
     try {
@@ -112,5 +115,55 @@ router.get('/admin-dashboard/cinema-list',async (req, res) => {
     }
 });
 
+
+router.get('/admin-dashboard/cinema/detail/:id', async (req, res) => {
+    try {
+        res.render('cinemadetail');
+    } catch (error) {
+        console.error('Lỗi khi tải chi tiết rạp phim:', error);
+        res.status(500).send('Lỗi server.');
+    }
+});
+
+router.get('/admin-dashboard/discounts',async (req, res) => {
+    try {
+      
+        res.render('discount');
+    } catch (error) {
+        console.error(error);
+    }
+});
+router.get('/admin-dashboard/schedules',async (req, res) => {
+    try {
+      
+        res.render('showschedule');
+    } catch (error) {
+        console.error(error);
+    }
+});
+router.get('/admin-dashboard/showtimes',async (req, res) => {
+    try {
+      
+        res.render('showtime');
+    } catch (error) {
+        console.error(error);
+    }
+});
+router.get('/admin-dashboard/price-ticket',async (req, res) => {
+    try {
+      
+        res.render('ticket');
+    } catch (error) {
+        console.error(error);
+    }
+});
+router.get('/admin-dashboard/food-and-drink',async (req, res) => {
+    try {
+      
+        res.render('foodanddrink');
+    } catch (error) {
+        console.error(error);
+    }
+});
 
 module.exports = router;
