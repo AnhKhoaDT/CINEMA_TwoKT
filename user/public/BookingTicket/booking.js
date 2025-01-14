@@ -1,4 +1,5 @@
 const seats = document.querySelectorAll(".seat, .seat-duo");
+
 let bookedSeats = new Set(); // Example booked seats
 let selectedSeats = new Set();
 let productList = new Set();
@@ -6,6 +7,7 @@ let productList = new Set();
 seats.forEach((seat) => {
   // Check if seat is booked initially
   if (seat.id && bookedSeats.has(seat.id)) {
+
     seat.classList.add("booked");
   }
 
@@ -17,6 +19,7 @@ seats.forEach((seat) => {
     if (seat.classList.contains("selected")) {
       seat.classList.remove("selected");
       selectedSeats.delete(seat.id);
+
       productList.delete(seat.id);
     } else {
       seat.classList.add("selected");
@@ -26,6 +29,7 @@ seats.forEach((seat) => {
     console.log("Selected Seats:", selectedSeats); //For debugging purposes.
     console.log("Product List:", productList); //For debugging purposes.
     console.log("Booked Seats:", bookedSeats); //For debugging purposes.
+
   });
 });
 
@@ -117,6 +121,7 @@ timeButtons.forEach((button) => {
       button.classList.add("selected");
     }
   });
+
 });
 
 // Đợi DOM tải xong
@@ -181,3 +186,6 @@ function numberToDigits(number) {
 }
 
 //     res.render("booking", {
+
+});
+

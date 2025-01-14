@@ -153,5 +153,7 @@ module.exports = {
   unHoldSeat,
   bookSeat,
   unBookSeat,
+
   getSeatByTheaterDataID,
+
 };

@@ -62,7 +62,9 @@ const getShowtimeByScheduleID = async (scheduleID) => {
             $push: {
               id: "$_id", // ID của buổi chiếu
               startTimes: "$showAt.startTime", // Danh sách thời gian bắt đầu từ `showAt`
+
               theaterDataID: "$showAt.theaterDataID", // ID của phòng chiếu
+
             },
           },
         },
@@ -90,7 +92,9 @@ const getShowtimeByScheduleID = async (scheduleID) => {
               in: {
                 id: "$$showtime.id", // Lấy ID của buổi chiếu
                 startTimes: "$$showtime.startTimes", // Lấy thời điểm bắt đầu
+
                 theaterDataID: "$$showtime.theaterDataID", // Lấy ID của phòng chiếu
+
               },
             },
           },

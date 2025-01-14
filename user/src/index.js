@@ -1,7 +1,11 @@
 const express = require("express");
 
+
 const axios = require("axios");
 
+
+const axios = require("axios");
+axios.defaults.withCredentials = true;
 const router = express.Router();
 
 const { WEB_URL } = require("./config/env.js");
@@ -30,11 +34,21 @@ router.get("/", async (req, res) => {
   try {
     const response = await axios.get(`${WEB_URL}/api/movies`);
 
+
     res.render("index", { movies: response.data.movies });
+
+    console.log("User: ", req.session.user); 
+    res.render("index", { 
+      movies: response.data.movies, 
+      user: req.session.user || null 
+    });
+    
   } catch (error) {
     console.error(error);
   }
+  
 });
+
 
 router.get("/detail/:id", async (req, res) => {
   try {
@@ -48,13 +62,6 @@ router.get("/detail/:id", async (req, res) => {
   }
 });
 
-router.get("/register", (req, res) => {
-  try {
-    res.render("auth"); // Truyền activeTab để xác định tab hiển thị
-  } catch (error) {
-    console.error(error);
-  }
-});
 
 router.get("/movielist", async (req, res) => {
   try {
@@ -93,8 +100,47 @@ router.get('/paying', (req, res) => {
         res.render('paymethod'); // Truyền activeTab để xác định tab hiển thị
     } catch (error) {
         console.error(error);
-    }
+=======
+router.get("/register", (req, res) => {
+  try {
+   
+    res.render("auth", { 
+      user: req.session.user || null 
+    });
+  } catch (error) {
+    console.error(error);
+  }
 });
+
+
+
+const checkLoginStatus = async () => {
+  try {
+    const response = await axios.get("http://localhost/api/auth/status", { withCredentials: true });
+    if (response.data.isAuthenticated) {
+      console.log("User is authenticated:", response.data.user);
+    } else {
+      console.log("User is not authenticated.");
+    }
+  } catch (error) {
+    console.error("Error checking login status:", error.response?.data || error.message);
+  }
+};
+
+router.get("/contact", (req, res) => {
+  try {
+   
+    res.render("contact", { 
+      user: req.session.user || null 
+    });
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+checkLoginStatus();
+
+
 
 
     console.log(response_showtime.data.showtimes);

@@ -24,7 +24,7 @@ document.getElementById("signup-form").addEventListener("submit", async function
 
     try {
         // Gửi yêu cầu POST tới server
-        const response = await axios.post('/auth/register', formData);
+        const response = await axios.post('/api/auth/register', formData);
 
         // Xử lý phản hồi từ server
         alert("Đăng ký thành công!");
@@ -55,13 +55,22 @@ document.getElementById("login-form").addEventListener("submit", async function 
 
     try {
         // Gửi yêu cầu POST tới server
-        const response = await axios.post('/auth/login', formData);
+        const response = await axios.post('/api/auth/login', formData,{ withCredentials: true });
 
         // Xử lý phản hồi từ server
         alert("Đăng nhập thành công!");
         console.log(response.data);
+      
 
         document.getElementById("login-form").reset();
+          // In giá trị `isAuthenticated`
+        if (response.data.isAuthenticated) {
+            console.log("isAuthenticated:", response.data.isAuthenticated);
+            
+        } else {
+            console.log("isAuthenticated: false");
+           
+        }
 
         // Điều hướng người dùng theo vai trò
         if (response.data.user.role === "customer") {
@@ -69,9 +78,16 @@ document.getElementById("login-form").addEventListener("submit", async function 
         } else if (response.data.user.role === "admin") {
             window.location.href = "/admin-dashboard"; // Chuyển hướng tới dashboard của admin
         }
+        return res.status(200).json({
+            message: "User logged in successfully",
+            user: req.session.user,
+            isAuthenticated: true, // Trả về trạng thái đăng nhập
+            sessionId: req.sessionID // Trả về session ID
+        });
     } catch (error) {
         console.error("Error:", error.response ? error.response.data : error.message);
         alert("Đã xảy ra lỗi: " + (error.response ? error.response.data.message : error.message));
+        res.status(401).json({ message: "Invalid credentials", isAuthenticated: false });
     }
 });
 
@@ -94,3 +110,4 @@ document.querySelectorAll(".toggle-password").forEach(toggle => {
         eyeIcon.classList.toggle("bi-eye", isPassword);
     });
 });
+

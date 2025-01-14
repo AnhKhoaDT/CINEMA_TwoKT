@@ -1354,4 +1354,32 @@ h4 {
         font-size: 16px;
         /* Giảm kích thước font tiêu đề */
     }
+
 }
+
+
+.nav-item {
+    position: relative;
+  }
+  
+ 
+  .hidden {
+    display: none;
+  }
+  
+  .relative {
+    position: relative;
+  }
+  
+  .absolute {
+    position: absolute;
+  }
+
+  .text-lg {
+    font-size: 1.25rem; /* Tăng kích thước chữ */
+  }
+  .font-bold {
+    font-weight: bold; /* Làm đậm chữ */
+  }
+  
+

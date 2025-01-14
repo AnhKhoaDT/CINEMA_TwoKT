@@ -58,3 +58,42 @@ $(document).ready(() => {
         }
     })
 })
+
+document.addEventListener("DOMContentLoaded", () => {
+    const logoutButton = document.getElementById("logoutButton");
+    
+    if (logoutButton) {
+        logoutButton.addEventListener("click", async () => {
+            const confirmLogout = confirm("Bạn có chắc chắn muốn đăng xuất?");
+            if (!confirmLogout) {
+                return; // Nếu người dùng không xác nhận, thoát hàm
+            }
+
+            try {
+                // Gửi yêu cầu đăng xuất
+                const response = await axios.get("/api/auth/logout", { withCredentials: true });
+                alert("Đăng xuất thành công!");
+                console.log(response.data.message);
+
+                // Chuyển hướng đến trang đăng nhập
+                window.location.href = "/auth/login";
+            } catch (error) {
+                console.error("Lỗi khi đăng xuất:", error.response?.data || error.message);
+                alert("Đã xảy ra lỗi khi đăng xuất. Vui lòng thử lại.");
+            }
+        });
+    }
+});
+
+  
+
+  document.cookie.split(";").forEach((cookie) => {
+    if (cookie.trim().startsWith("connect.sid=")) {
+      console.log("Cookie connect.sid:", cookie.trim());
+    }
+  });
+// JavaScript cách
+document.getElementById("userMenuButton").addEventListener("click", function () {
+    const userMenu = document.getElementById("userMenu");
+    userMenu.classList.toggle("hidden");
+});

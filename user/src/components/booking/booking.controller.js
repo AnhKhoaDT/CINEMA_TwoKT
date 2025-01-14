@@ -57,6 +57,7 @@ const unBookSeat = async (req, res) => {
   }
 };
 
+
 const getSeatByTheaterDataID = async (req, res) => {
   try {
     const theaterDataID = req.params.id;
@@ -72,10 +73,14 @@ const getSeatByTheaterDataID = async (req, res) => {
   }
 };
 
+
 module.exports = {
   holdSeat,
   unHoldSeat,
   bookSeat,
   unBookSeat,
+
   getSeatByTheaterDataID,
+
+
 };
