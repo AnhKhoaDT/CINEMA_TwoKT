@@ -1,10 +1,13 @@
 const seats = document.querySelectorAll(".seat, .seat-duo");
-const bookedSeats = ["A01", "C05", "H01-02"]; // Example booked seats
+
+let bookedSeats = new Set(); // Example booked seats
 let selectedSeats = new Set();
+let productList = new Set();
 
 seats.forEach((seat) => {
   // Check if seat is booked initially
-  if (seat.id && bookedSeats.includes(seat.id)) {
+  if (seat.id && bookedSeats.has(seat.id)) {
+
     seat.classList.add("booked");
   }
 
@@ -16,11 +19,17 @@ seats.forEach((seat) => {
     if (seat.classList.contains("selected")) {
       seat.classList.remove("selected");
       selectedSeats.delete(seat.id);
+
+      productList.delete(seat.id);
     } else {
       seat.classList.add("selected");
       selectedSeats.add(seat.id);
+      productList.add(seat.id);
     }
     console.log("Selected Seats:", selectedSeats); //For debugging purposes.
+    console.log("Product List:", productList); //For debugging purposes.
+    console.log("Booked Seats:", bookedSeats); //For debugging purposes.
+
   });
 });
 
@@ -112,4 +121,71 @@ timeButtons.forEach((button) => {
       button.classList.add("selected");
     }
   });
+
 });
+
+// Đợi DOM tải xong
+document.addEventListener("DOMContentLoaded", function () {
+  console.log("DOM loaded");
+  // Lấy tất cả button có class 'showtime-btn'
+  const buttons = document.querySelectorAll(".showtime-btn");
+
+  // Lặp qua từng button và thêm sự kiện click
+  buttons.forEach((button) => {
+    button.addEventListener("click", function () {
+      const time = button.getAttribute("theater_id"); // Lấy thời gian từ thuộc tính data-time
+      console.log("Thời gian suất chiếu:", time);
+
+      // Gọi API với thời gian này
+      axios
+        .get(`/api/bookticket/getSeat/${time}`, {})
+        .then((response) => {
+          console.log("Dữ liệu từ API:", response.data);
+          for (let i = 0; i < response.data.length; i++) {
+            if (response.data[i].owner != null) {
+              bookedSeats.add(
+                `${response.data[i].row}${numberToDigits(response.data[i].col)}`
+              );
+              console.log(response.data[i].owner);
+            }
+          }
+          // Xử lý dữ liệu nhận được
+        })
+        .catch((error) => {
+          console.error("Có lỗi xảy ra khi gọi API:", error);
+        });
+    });
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const bookingButton = document.getElementById("btn-booking");
+  // if (bookingButton) {
+  //   bookingButton.addEventListener("click", function () {
+  //     const data = {
+  //       seatID: Array.from(selectedSeats),
+  //       userID: "123456",
+  //     };
+  //     axios
+  //       .post("/api/bookticket/bookSeat", data)
+  //       .then((response) => {
+  //         console.log("Dữ liệu từ API:", response.data);
+  //         // Xử lý dữ liệu nhận được
+  //       })
+  //       .catch((error) => {
+  //         console.error("Có lỗi xảy ra khi gọi API:", error);
+  //       });
+  //   });
+  // } else {
+  //   console.error('Không tìm thấy phần tử với id="btn-booking".');
+  // }
+});
+
+function numberToDigits(number) {
+  return number < 10 ? `0${number}` : `${number}`;
+}
+
+//     res.render("booking", {
+
+});
+

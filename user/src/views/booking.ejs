@@ -145,23 +145,41 @@
       <div class="location-n-time">
         <h2>CHỌN RẠP VÀ SUẤT CHIẾU</h2>
         <div class="LNT-options">
+
+          <% showtimes.forEach((showtime) => { %>
           <div class="location">
-            <h3><%=showtimes.cinemaID%></h3>
-            <p><%-showtimes%></p>
+            <!-- Tên rạp -->
+            <h3><%= showtime.cinemaDetails.name %></h3>
+
+            <!-- Địa chỉ rạp -->
+            <p><%= showtime.cinemaDetails.address %></p>
+
+            <!-- Các suất chiếu -->
             <div class="time">
-              <button>9:00</button>
-              <button>11:00</button>
-              <button>14:00</button>
+              <% showtime.showList.forEach((schedule) => { %> <%
+              schedule.startTimes.forEach((time) => { %>
+              <button
+                class="showtime-btn"
+                theater_id="<%= schedule.theaterDataID %>"
+              >
+                <%= new Date(time).toLocaleTimeString([], { hour: '2-digit',
+                minute: '2-digit' }) %>
+              </button>
+              <% }) %> <% }) %>
             </div>
           </div>
+          <% }) %>
         </div>
       </div>
+
       <div class="ticket-container">
         <h2>CHỌN LOẠI VÉ</h2>
         <div class="ticket-options">
           <div class="ticket">
             <div class="ticket-info">
-              <h5>NGƯỜI LỚN</h5>
+
+              <h5>NGƯỜI LỚN VÀ TRẺ EM</h5>
+
               <h5>ĐƠN</h5>
               <p class="price">45.000 VNĐ</p>
             </div>
@@ -174,20 +192,10 @@
           <div class="ticket">
             <div class="ticket-info">
               <h5>NGƯỜI LỚN</h5>
-              <h5>ĐƠN</h5>
-              <p class="price">45.000 VNĐ</p>
-            </div>
-            <div class="ticket-num">
-              <button class="decrease">-</button>
-              <p class="quantity">0</p>
-              <button class="increase">+</button>
-            </div>
-          </div>
-          <div class="ticket">
-            <div class="ticket-info">
-              <h5>NGƯỜI LỚN</h5>
-              <h5>ĐƠN</h5>
-              <p class="price">45.000 VNĐ</p>
+
+              <h5>ĐÔI</h5>
+              <p class="price">90.000 VNĐ</p>
+
             </div>
             <div class="ticket-num">
               <button class="decrease">-</button>
@@ -362,9 +370,9 @@
         <h2>CHỌN ĐỒ ĂN</h2>
         <div class="food-drink-options">
           <div class="food-drink">
-            <img
-              src="../../public/images/food-drink/Screenshot 2024-12-01 175003.png"
-            />
+
+            <img src="" />
+
             <div class="food-drink-info">
               <h5>SNACK THÁI</h5>
               <p class="price">25.000 VNĐ</p>
@@ -376,9 +384,9 @@
             </div>
           </div>
           <div class="food-drink">
-            <img
-              src="../../public/images/food-drink/Screenshot 2024-12-01 175003.png"
-            />
+
+            <img src="" />
+
             <div class="food-drink-info">
               <h5>SNACK THÁI</h5>
               <p class="price">25.000 VNĐ</p>
@@ -390,9 +398,9 @@
             </div>
           </div>
           <div class="food-drink">
-            <img
-              src="../../public/images/food-drink/Screenshot 2024-12-01 175003.png"
-            />
+
+            <img src="" />
+
             <div class="food-drink-info">
               <h5>SNACK THÁI</h5>
               <p class="price">25.000 VNĐ</p>
@@ -409,9 +417,9 @@
         <h2>CHỌN ĐỒ UỐNG</h2>
         <div class="food-drink-options">
           <div class="food-drink">
-            <img
-              src="../../public/images/food-drink/Screenshot 2024-12-01 174833.png"
-            />
+
+            <img src="" />
+
             <div class="food-drink-info">
               <h5>COCA 32OZ</h5>
               <p class="price">37.000 VNĐ</p>
@@ -423,9 +431,9 @@
             </div>
           </div>
           <div class="food-drink">
-            <img
-              src="../../public/images/food-drink/Screenshot 2024-12-01 174833.png"
-            />
+
+            <img src="" />
+
             <div class="food-drink-info">
               <h5>COCA 32OZ</h5>
               <p class="price">37.000 VNĐ</p>
@@ -437,9 +445,9 @@
             </div>
           </div>
           <div class="food-drink">
-            <img
-              src="../../public/images/food-drink/Screenshot 2024-12-01 174833.png"
-            />
+
+            <img src="" />
+
             <div class="food-drink-info">
               <h5>COCA 32OZ</h5>
               <p class="price">37.000 VNĐ</p>
@@ -459,7 +467,11 @@
         </div>
         <div class="sum">
           <span id="total-price">Tổng cộng: 0 VNĐ</span>
-          <button>Đặt vé</button>
+
+          <a href="/payInfo">
+            <button id="btn-booking">Đặt vé</button>
+          </a>
+
         </div>
       </div>
     </div>
@@ -530,23 +542,9 @@
                   </ul>
                 </div>
               </div>
-              <div class="col-3 col-md-6 col-sm-6">
-                <div class="content">
-                  <p><b>Download app</b></p>
-                  <ul class="footer-menu">
-                    <li>
-                      <a href="#">
-                        <img src="../../public/images/google-play.png" alt="" />
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <img src="../../public/images/app-store.png" alt="" />
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+
+              <div class="col-3 col-md-6 col-sm-6"></div>
+
             </div>
           </div>
         </div>
@@ -574,5 +572,8 @@
     <!-- APP SCRIPT -->
     <script src="../Home/app.js"></script>
     <script src="../BookingTicket/booking.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
   </body>
 </html>
