@@ -62,17 +62,7 @@ const getUpcomingMovies = async (req, res) => {
   }
 };
 
-const addShowtime = async (req, res) => {
-  try {
-    const movie = await movieService.addShowtime(req.params.id, req.body.date);
-    res.status(200).json({ movie });
-  } catch (error) {
-    if (error instanceof customError) {
-      return res.status(error.statusCode).json({ error: error.message });
-    }
-    return res.status(500).json({ error: error.message });
-  }
-};
+
 
 const queryMovies = async (req, res) => {
   try {
@@ -87,7 +77,6 @@ const queryMovies = async (req, res) => {
 };
 
 module.exports = {
-  addShowtime,
   createMovie,
   getMovieDetail,
   getAllMovies,

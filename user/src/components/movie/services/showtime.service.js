@@ -1,30 +1,9 @@
 const showtimeModel = require("../models/showtime.model");
-const theaterDataService = require("../../theater/services/theaterData.service");
+const theaterDataService = require("../../booking/services/theaterData.service");
 const cinemaService = require("../../cinema/cinema.service");
+const mongoose = require("mongoose");
 
 const CustomError = require("../../../utils/CustomError");
-
-//showtimeInput
-// {
-//   "scheduleID": "60f1b9b3b3b3b32f1c8f1b3b",
-//   "cinemaID": "60f1b9b3b3b3b32f1c8f1b3b",
-//   "showAt": {
-//     "startTime": "12:00:00",
-//     "endTime": "2021-07-17T10:00:00.000Z",
-//     "theaterID": "60f1b9b3b3b3b32f1c8f1b3b"
-//   }
-// }
-
-// showtimeObject
-// {
-//   "scheduleID": "60f1b9b3b3b3b32f1c8f1b3b",
-//   "cinemaID": "60f1b9b3b3b3b32f1c8f1b3b",
-//   "showAt": {
-//     "startTime": "2021-07-17T08:00:00.000Z",
-//     "endTime": "2021-07-17T10:00:00.000Z",
-//     "theaterDataID": "60f1b9b3b3b3b32f1c8f1b3b"
-//   }
-// }
 
 const addShowtime = async (showtimeInput) => {
   try {
@@ -47,7 +26,7 @@ const addShowtime = async (showtimeInput) => {
     const theaterData = await theaterDataService.createTheaterData({
       theaterID,
       showDate: new Date(startTime).setHours(0, 0, 0, 0), // Chỉ giữ lại ngày
-      timeRanges: [{ start: startTime, end: endTime }], // Thêm khoảng thời gian mới
+      timeRanges: { start: startTime, end: endTime }, // Thêm khoảng thời gian mới
     });
 
     // Tạo buổi chiếu mới
@@ -72,10 +51,67 @@ const addShowtime = async (showtimeInput) => {
 
 const getShowtimeByScheduleID = async (scheduleID) => {
   try {
-    const showtimes = await showtimeModel.find({ scheduleID: scheduleID });
+    const cinemasWithShowtimes = await showtimeModel.aggregate([
+      // Lọc theo `scheduleID`
+      { $match: { scheduleID: new mongoose.Types.ObjectId(scheduleID) } },
+      // Gom nhóm theo `cinemaID`
+      {
+        $group: {
+          _id: "$cinemaID", // Nhóm theo cinemaID
+          showtimes: {
+            $push: {
+              id: "$_id", // ID của buổi chiếu
+              startTimes: "$showAt.startTime", // Danh sách thời gian bắt đầu từ `showAt`
+            },
+          },
+        },
+      },
+
+      // Lookup để lấy thông tin chi tiết của Cinema (nếu cần)
+      {
+        $lookup: {
+          from: "cinemas", // Tên collection chứa Cinema
+          localField: "_id", // `_id` là cinemaID sau khi nhóm
+          foreignField: "_id", // `_id` của Cinema
+          as: "cinemaDetails", // Thông tin chi tiết về Cinema
+        },
+      },
+
+      // Biến đổi kết quả để giữ lại thông tin cần thiết
+      {
+        $project: {
+          cinemaID: "$_id", // Cinema ID
+          cinemaDetails: { $arrayElemAt: ["$cinemaDetails", 0] }, // Lấy Cinema đầu tiên
+          showList: {
+            $map: {
+              input: "$showtimes", // Duyệt qua các buổi chiếu
+              as: "showtime",
+              in: {
+                id: "$$showtime.id", // Lấy ID của buổi chiếu
+                startTimes: "$$showtime.startTimes", // Lấy thời điểm bắt đầu
+              },
+            },
+          },
+        },
+      },
+    ]);
+
+    return cinemasWithShowtimes;
+  } catch (error) {
+    throw new Error(
+      error.message || "An error occurred while getting showtime"
+    );
+  }
+};
+
+const getShowtimeByCinemaID = async (cinemaID) => {
+  try {
+    const showtimes = await showtimeModel.find({
+      cinemaID,
+    });
 
     if (!showtimes) {
-      throw new CustomError(`Not found in ${scheduleID}`, 404);
+      throw new CustomError(`Not found in ${cinemaID}`, 404);
     }
 
     return showtimes;
@@ -93,7 +129,7 @@ const isValidShowtime = async (showtime) => {
 
   // Đảm bảo ngày được so sánh chính xác (set về 00:00:00)
   const showDate = new Date(startTime);
-  showDate.setHours(0, 0, 0, 0);
+  showDate.setHours(0, 0, 0, 1);
 
   // Lấy dữ liệu lịch chiếu của rạp trong ngày
   const theaterData = await theaterDataService.queryTheaterData({

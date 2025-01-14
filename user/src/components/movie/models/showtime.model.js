@@ -18,17 +18,17 @@ const showAtSchema = new mongoose.Schema({
 });
 
 const showtimeSchema = new mongoose.Schema({
-  scheduleID: {// truy vấn đến cái ngày 
+  scheduleID: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Schedule",
     required: true,
   },
-  cinemaID: {// của rạp nào 
+  cinemaID: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Cinema",
     required: true,
   },
-  showAt: [showAtSchema],// giờ
+  showAt: [showAtSchema],
 });
 
 const Showtime = mongoose.model("Showtime", showtimeSchema);

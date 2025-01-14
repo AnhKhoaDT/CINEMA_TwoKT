@@ -25,6 +25,22 @@ const getAllCinemas = async () => {
   }
 };
 
+const addTheater = async (cinemaID, theaterID) => {
+  try {
+    const cinema = await cinemaModel.findById(cinemaID);
+    if (!cinema) {
+      throw new CustomError("Cinema not found", 404);
+    }
+    cinema.theaters.push(theaterID);
+    return await cinema.save();
+  } catch (error) {
+    if (error instanceof CustomError) {
+      throw error;
+    }
+    throw new Error(error);
+  }
+};
+
 const findById = async (id) => {
   try {
     console.log(id);
@@ -62,4 +78,5 @@ module.exports = {
   getAllCinemas,
   findById,
   getTheater,
+  addTheater,
 };

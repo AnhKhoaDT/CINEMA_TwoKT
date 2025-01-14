@@ -28,7 +28,8 @@ const login = async (req, res, next) => {
       if (loginErr) return next(loginErr);
 
       const loggedInUser = await authService.getUserDetails(user._id);
-
+ // Lưu thông tin vào session
+      req.session.user = loggedInUser;
       // Gửi session ID cùng với phản hồi
       return res.status(200).json({
         message: "User logged in successfully",

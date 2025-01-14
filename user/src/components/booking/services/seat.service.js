@@ -28,14 +28,23 @@ const addManySeats = async (seats) => {
 const holdSeat = async (seatID, userID) => {
   try {
     const seat = await seatModel.findById(seatID);
+
     if (!seat) {
       throw new CustomError(`Seat ${seatID} not found`, 404);
     }
+    console.log(seat);
+    seat.owner = seat.owner || {
+      userID: null,
+      expireIn: null,
+    };
 
     if (seat.owner.userID && seat.owner.expireIn > new Date()) {
       throw new CustomError(`Seat ${seatID} is already hold`, 400);
     }
+
     seat.owner.userID = userID;
+    console.log("success");
+
     seat.owner.expireIn = new Date().setMinutes(new Date().getMinutes() + 5);
 
     return await seat.save();
@@ -122,4 +131,8 @@ const unBookSeat = async (seatID) => {
 module.exports = {
   addSeat,
   addManySeats,
+  holdSeat,
+  unHoldSeat,
+  bookSeat,
+  unBookSeat,
 };
