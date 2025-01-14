@@ -1355,3 +1355,84 @@ h4 {
         /* Giảm kích thước font tiêu đề */
     }
 }
+
+
+
+
+.nav-item {
+    position: relative;
+  }
+  
+  .nav-link {
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 15px;
+    color: white; /* Màu chữ trắng */
+    transition: linear 0.25s;
+  }
+  
+  .nav-link:hover {
+    color: #0da8a8; /* Màu chữ khi hover */
+    cursor: pointer;
+    border-bottom: 2px solid #0da8a8;
+    padding-bottom: 5px;
+  }
+  
+  .group .hidden {
+    display: none;
+  }
+  
+  .group:hover .hidden {
+    display: block;
+  }
+  
+  .absolute {
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
+  
+  .bg-white {
+    background-color: white;
+  }
+  
+  .text-black {
+    color: black;
+  }
+  
+  .shadow-lg {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .p-4 {
+    padding: 1rem;
+  }
+  
+  .rounded-lg {
+    border-radius: 0.5rem;
+  }
+  
+  .text-sm {
+    font-size: 0.875rem;
+  }
+  
+  .mb-2 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .text-blue-500 {
+    color: #3b82f6;
+  }
+  
+  .text-blue-500:hover {
+    color: #2563eb; /* Màu chữ khi hover */
+  }
+  
+  .text-black-600:hover {
+    color: #2563eb; /* Màu khi hover */
+  }
+  
+  .underline {
+    text-decoration: underline;
+  }
+  

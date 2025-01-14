@@ -187,5 +187,5 @@ function numberToDigits(number) {
 
 //     res.render("booking", {
 
-});
+
 

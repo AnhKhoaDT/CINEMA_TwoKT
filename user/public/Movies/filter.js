@@ -34,7 +34,7 @@ $(document).ready(function () {
 
     // Gửi yêu cầu AJAX
     $.ajax({
-      url: "/movies/query", // Endpoint API
+      url: '${WEB_URL}/api/movies/query', // Endpoint API
       method: "GET",
       data: params,
       success: function (response) {

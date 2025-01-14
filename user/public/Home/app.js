@@ -92,8 +92,4 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("Cookie connect.sid:", cookie.trim());
     }
   });
-// JavaScript cách
-document.getElementById("userMenuButton").addEventListener("click", function () {
-    const userMenu = document.getElementById("userMenu");
-    userMenu.classList.toggle("hidden");
-});
+
