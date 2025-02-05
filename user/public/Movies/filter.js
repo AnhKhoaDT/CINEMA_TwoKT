@@ -38,10 +38,10 @@ $(document).ready(function () {
       method: "GET",
       data: params,
       success: function (response) {
-        const moviesData = response.movies || {};
-        const movies = moviesData.movies || [];
-        totalPages = moviesData.totalPages || 1;
-        currentPage = moviesData.page || 1;
+        console.log("API Response:", response);
+        const movies = response.data.movies || []; // Danh sách phim
+        const currentPage= response.data.page || 1; // Trang hiện tại
+        const totalPages = response.data.totalPages || 1; // Tổng số trang
 
         movieList.empty();
         if (movies.length === 0) {

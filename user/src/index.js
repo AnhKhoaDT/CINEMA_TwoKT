@@ -79,7 +79,7 @@ router.get("/register", (req, res) => {
 
 router.get("/movielist", async (req, res) => {
   try {
-    const response = await axios.get(`${WEB_URL}/api/movies`);
+    const response = await axios.get(`${WEB_URL}/api/movies/query`);
     console.log("Dữ liệu trả về từ API:", response.data); // Kiểm tra cấu trúc dữ liệu trả về
 
     // Trích xuất dữ liệu từ API
