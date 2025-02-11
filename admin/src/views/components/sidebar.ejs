@@ -1,0 +1,63 @@
+<div class="sidebar">
+    <h4 class="text-white" id="user-name">Admin</h4>
+    <!-- Dashboard Link -->
+    <a class="sidebar-link" href="/admin-dashboard">
+        <i class="bi bi-house"></i> Dashboard
+    </a>
+    <ul class="sidebar-list">
+        <!-- Sidebar Item 1 -->
+        <li class="sidebar-item">
+            <a class="sidebar-link" href="#" data-bs-toggle="collapse" data-bs-target="#menu1">
+                <i class="bi bi-film"></i> Quản lý phim
+            </a>
+            <div class="sidebar-collapse collapse" id="menu1">
+                <ul class="sidebar-sublist ps-3">
+                    <li><a href="/list-movie" class="sidebar-sublink">Danh sách phim</a></li>
+                    <li><a href="/add-movie" class="sidebar-sublink">Thêm phim</a></li>
+                </ul>
+            </div>
+        </li>
+        <!-- Sidebar Item 2 -->
+        <li class="sidebar-item">
+            <a class="sidebar-link" href="#" data-bs-toggle="collapse" data-bs-target="#menu2">
+                <i class="bi bi-geo-alt"></i> Quản lý rạp phim
+            </a>
+            <div class="sidebar-collapse collapse" id="menu2">
+                <ul class="sidebar-sublist ps-3">
+                    <li><a href="/admin-dashboard/cinema-list" class="sidebar-sublink">Danh sách rạp phim</a></li>
+                </ul>
+            </div>
+        </li>
+        <!-- Sidebar Item 3 -->
+        <li class="sidebar-item">
+            <a class="sidebar-link" href="#" data-bs-toggle="collapse" data-bs-target="#menu3">
+                <i class="bi bi-calendar"></i> Quản lý lịch chiếu 
+            </a>
+            <div class="sidebar-collapse collapse" id="menu3">
+                <ul class="sidebar-sublist ps-3">
+                    <li><a href="/admin-dashboard/schedules" class="sidebar-sublink">Danh sách lịch chiếu</a></li>
+                    <li><a href="#" class="sidebar-sublink">Thêm lịch chiếu</a></li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+    <a class="sidebar-link" href="/admin-dashboard/showtimes">
+        <i class="bi bi-camera-video"></i> Quản lý suất chiếu
+    </a>
+    <a class="sidebar-link" href="/admin-dashboard/discounts">
+        <i class="bi bi-percent"></i> Quản lý khuyến mãi
+    </a>
+    <a class="sidebar-link" href="/admin-dashboard/price-ticket">
+        <i class="bi bi-ticket-perforated"></i> Quản lý giá vé
+    </a>
+    <a class="sidebar-link" href="/admin-dashboard/food-and-drink">
+        <i class="bi bi-cup-straw"></i> Quản lý đồ ăn và thức uống
+    </a>
+    <a class="sidebar-link" href="#">
+        <i class="bi bi-receipt"></i> Quản lý đơn hàng
+    </a>
+    <!-- Logout Button -->
+    <a href="#" class="sidebar-logout">
+        <i class="bi bi-box-arrow-right"></i> Đăng xuất
+    </a>
+</div>

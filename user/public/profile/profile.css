@@ -1,0 +1,16 @@
+/* Avatar styling */
+.avatar {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+/* Adjust layout for smaller screens */
+@media (max-width: 768px) {
+    .profile-container {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+  

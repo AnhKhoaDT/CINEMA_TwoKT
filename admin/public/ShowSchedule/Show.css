@@ -1,0 +1,19 @@
+.Show-schedule, .Show-time {
+    margin-left: 200px; /* Để tránh đè sidebar */
+    background-color: #f8f9fa;
+    flex-grow: 1; /* Đảm bảo form chiếm hết không gian còn lại */
+    padding: 20px;
+}
+
+/* Giới hạn chiều rộng của ô tìm kiếm */
+.search .input-group {
+    max-width: 300px;
+}
+
+/* Chỉnh nút kính lúp */
+#search-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+}

@@ -1,0 +1,1438 @@
+:root {
+    --main-color: #1f83ed;
+    --body-bg: #181616;
+    --box-bg: #221f1f;
+    --text-color: #ffffff;
+    --nav-height: 120px;
+    --space-top: 30px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Cairo", sans-serif;
+    background-color: var(--body-bg);
+    color: var(--text-color);
+    padding-top: var(--nav-height);
+}
+
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+img {
+    max-width: 100%;
+}
+
+.main-color {
+    color: var(--main-color);
+}
+
+.container {
+    max-width: 1920px;
+    padding: 0 40px;
+    margin: auto;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.nav-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99;
+    background-color: #000000;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--text-color);
+    height: var(--nav-height);
+}
+.nav-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.nav-bottom {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-start; 
+}
+
+.nav a {
+    color: var(--text-color);
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+.nav-menu {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.nav-menu li ~ li {
+    margin-left: 30px;
+}
+
+.nav-menu a {
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.nav-menu a:hover {
+    color: var(--main-color);
+}
+
+.nav-menu a.btn:hover,
+a.logo:hover,
+a.movie-item:hover {
+    color: unset;
+}
+
+
+
+.btn {
+    color: #ffffff;
+    padding: 0.25rem 1.5rem;
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    font-weight: 700;
+    display: inline-flex;
+    position: relative;
+    align-items: center;
+}
+
+.btn-hover::before {
+    z-index: 1;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: var(--main-color);
+    transition: 0.3s ease-in-out;
+}
+
+.btn-hover:hover::before {
+    width: 100%;
+}
+
+.btn i,
+.btn span {
+    z-index: 1;
+}
+
+.btn i {
+    margin-right: 1rem;
+}
+
+
+.hamburger-menu {
+    --size: 30px;
+    height: var(--size);
+    width: var(--size);
+    cursor: pointer;
+    z-index: 101;
+    position: relative;
+    display: none;
+    align-items: center;
+
+}
+
+.hamburger {
+    position: relative;
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+    width: var(--size);
+    height: 3px;
+    border-radius: 0.5rem;
+    background-color: var(--text-color);
+    transition: 0.4s;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: "";
+    position: absolute;
+    left: 0;
+}
+
+.hamburger::before {
+    top: -10px;
+}
+
+.hamburger::after {
+    bottom: -10px;
+}
+
+.hamburger-menu.active .hamburger {
+    background-color: transparent;
+}
+
+.hamburger-menu.active .hamburger::before {
+    transform-origin: top left;
+    transform: rotate(45deg);
+    left: 6px;
+}
+
+.hamburger-menu.active .hamburger::after {
+    transform-origin: bottom left;
+    transform: rotate(-45deg);
+    left: 6px;
+}
+
+.hero-slide-item {
+    padding-top: 40%;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-slide-item img {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.hero-slide-item-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: var(--text-color);
+    display: flex;
+}
+
+.item-content-wraper {
+    padding-left: 5rem;
+    width: 40%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.item-content-wraper::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+}
+
+.item-content-title {
+    font-size: 5rem;
+    line-height: 5rem;
+    font-weight: 900;
+}
+
+.movie-infos {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: calc(var(--space-top) / 2);
+}
+
+.movie-info {
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.movie-info span {
+    margin-left: 5px;
+}
+
+.movie-info i {
+    color: var(--main-color);
+}
+
+.movie-info ~ .movie-info {
+    margin-left: 5px;
+}
+
+.item-content-description {
+    font-size: 1.15rem;
+    margin-top: var(--space-top);
+    line-height: 1.5rem;
+}
+
+.item-action {
+    margin-top: var(--space-top);
+}
+
+.carousel-nav-center {
+    position: relative;
+}
+
+.carousel-nav-center .owl-nav button i {
+    font-size: 3rem;
+}
+
+.carousel-nav-center .owl-nav button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carousel-nav-center .owl-nav .owl-prev {
+    position: absolute;
+    left: 5px;
+}
+
+.carousel-nav-center .owl-nav .owl-next {
+    position: absolute;
+    right: 5px;
+}
+
+.owl-nav button {
+    border: none;
+    outline: none;
+}
+
+.owl-nav button i {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+}
+
+.owl-nav button:hover i {
+    color: var(--main-color);
+}
+
+.top-down {
+    transform: translateY(-50px);
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s ease-in-out;
+}
+
+.delay-2 {
+    transition-delay: 0.2s;
+}
+
+.delay-4 {
+    transition-delay: 0.4s;
+}
+
+.delay-6 {
+    transition-delay: 0.6s;
+}
+
+.delay-8 {
+    transition-delay: 0.8s;
+}
+
+.owl-item.active .top-down {
+    transform: translateY(0);
+    visibility: visible;
+    opacity: 1;
+}
+
+.movie-item {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    padding-top: 140%;
+    cursor: pointer;
+}
+
+.movie-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: transform 0.3s linear;
+}
+
+.movie-item:hover img {
+    transform: scale(1.2);
+}
+
+.movie-item-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.movie-item-content::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+}
+
+.movie-item-title {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    position: relative;
+    font-weight: 700;
+}
+
+.section {
+    padding-top: 80px;
+}
+
+.section-header {
+    margin-bottom: 30px;
+    padding-left: 20px;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border-left: 4px solid var(--main-color);
+    display: flex;
+    align-items: center;
+}
+
+.pricing-header {
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.pricing-box {
+    padding: 50px;
+    margin: 15px 0;
+    background-color: var(--box-bg);
+    border-top: 5px solid transparent;
+    transition: transform 0.3s ease-in-out;
+}
+
+.pricing-box:hover {
+    transform: translateY(-20px);
+}
+
+.pricing-box.hightlight {
+    border-top: 5px solid var(--main-color);
+}
+
+.pricing-box-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.5rem;
+}
+
+.pricing-price {
+    font-weight: 700;
+}
+
+.pricing-price span {
+    font-size: 1rem;
+}
+
+.pricing-box-content {
+    text-align: center;
+    margin-top: 60px;
+    font-size: 1.25rem;
+}
+
+.pricing-box-action {
+    text-align: center;
+    margin-top: 60px;
+}
+
+footer.section {
+    margin-top: 80px;
+    padding-bottom: 80px;
+    position: relative;
+    background-color: var(--box-bg);
+}
+
+footer a:hover {
+    color: var(--main-color);
+}
+
+footer a.logo {
+    margin-top: -2.5rem;
+    display: block;
+}
+
+footer a.logo:hover {
+    color: unset;
+}
+
+.social-list {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.social-item {
+    --size: 30px;
+    height: var(--size);
+    width: var(--size);
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background-color: var(--text-color);
+    color: var(--main-color);
+}
+
+.social-item:hover {
+    background-color: var(--main-color);
+    color: var(--text-color);
+}
+
+.social-item ~ .social-item {
+    margin-left: 20px;
+}
+
+footer .content {
+    margin-top: 20px;
+}
+
+.footer-menu {
+    list-style-type: none;
+}
+
+.footer-menu a {
+    display: inline-block;
+    transition: transform 0.2s ease-in-out;
+}
+
+.footer-menu a:hover {
+    transform: translateX(5px);
+}
+
+.copyright {
+    padding: 10px;
+    border-top: 1px solid var(--body-bg);
+    background-color: var(--box-bg);
+    text-align: center;
+}
+
+/* RESPONSIVE */
+
+@media only screen and (max-width: 1280px) {
+    html {
+        font-size: 14px;
+    }
+
+    .hero-slide-item {
+        padding-top: 50%;
+    }
+
+    .item-content-wraper {
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    html {
+        font-size: 12px;
+    }
+
+    .container {
+        padding: 0 15px;
+    }
+
+    .hero-slide-item {
+        height: max-content;
+        padding-top: unset;
+    }
+
+    .item-content-wraper {
+        width: 100%;
+        height: 100%;
+        padding-bottom: 20px;
+        padding-right: 5rem;
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-slide-item-content {
+        position: relative;
+    }
+
+    .hero-slide-item img {
+        height: 100%;
+    }
+
+    .item-content-title {
+        font-size: 3rem;
+    }
+
+    .hamburger-menu {
+        display: grid;
+    }
+
+    .nav-menu {
+        /* display: none; */
+        position: absolute;
+        top: 100%;
+        left: -100%;
+        background-color: #000000;
+        flex-direction: column;
+        width: 80%;
+        height: 100vh;
+        padding: 20px;
+        transition: 0.3s ease-in-out;
+    }
+
+    .nav-menu li {
+        margin: 10px 30px;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+}
+
+
+/*--contact với about*/
+.container-common {
+    width: 95%;
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-between;
+}
+
+.btn-custom {
+    align-items: center; 
+    gap: 10px; 
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 40px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+  
+.btn-custom:hover {
+   background-color: #0056b3;
+}
+  
+
+.search-container {
+    border-radius: 50px;
+    overflow: hidden; 
+    height: 50px;
+}
+
+.search-input {
+    border: none;
+    padding-left: 15px;
+    font-size: 16px;
+    flex-grow: 1;
+}
+
+.search-input::placeholder {
+    color: #a0a4b8; 
+}
+
+.input-group-text.search-icon {
+    border: none; 
+    background-color: white; 
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-click-header {
+    font-size: 22px; 
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.text-click-header:hover {
+    color: #fffb00; 
+}
+
+.text-click-footer {
+    font-size: 22px;
+    color: #ffffff; 
+    text-decoration: none;
+    transition: transform 0.3s ease; 
+    display: inline-block;
+}
+
+.text-click-footer:hover {
+    transform: scale(1.2);
+}
+
+.text-cus {
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.booking-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Căn giữa theo chiều ngang */
+    align-items: center;
+    /* Căn giữa theo chiều dọc */
+}
+
+.movie-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centers horizontally */
+    justify-content: center;
+    /* Centers vertically */
+    text-align: center;
+    /* Centers text */
+    width: 300px;
+    height: 450px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.movie-title img {
+    width: 100%;
+    height: 100%;
+}
+
+.movie-title title {
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.location-n-time {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centers horizontally */
+    justify-content: center;
+    /* Centers vertically */
+    margin-top: 30px;
+    gap: 10px;
+}
+
+.LNT-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centers horizontally */
+    justify-content: center;
+    /* Centers vertically */
+    gap: 20px;
+}
+
+.LNT-options .location {
+    background-color: #333030;
+    width: 700px;
+    height: 150px;
+}
+
+.location h3,
+p {
+    margin-left: 10px;
+    margin-top: 10px;
+
+}
+
+.LNT-options .time {
+    margin-left: 10px;
+    gap: 10px;
+}
+
+.time button {
+    background-color: #333030;
+    color: white;
+    width: 60px;
+    height: 30px;
+}
+
+.time button.selected {
+    border: 2px solid white;
+}
+
+.ticket-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centers horizontally */
+    justify-content: center;
+    /* Centers vertically */
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.ticket-options {
+    display: flex;
+    align-items: center;
+    /* Centers horizontally */
+    justify-content: center;
+    /* Centers vertically */
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.ticket {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #f0f0f0;
+    /* Viền sáng hơn */
+    border-radius: 10px;
+    width: 300px;
+    padding: 15px;
+    /* Thêm khoảng cách bên trong */
+    gap: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Hiệu ứng nổi */
+    transition: transform 0.2s ease;
+    /* Hiệu ứng hover */
+}
+
+.ticket:hover {
+    transform: scale(1.02);
+    /* Phóng to nhẹ khi hover */
+}
+
+.ticket-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    /* Khoảng cách giữa các dòng */
+}
+
+.ticket-info h5 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.ticket-info p {
+    margin: 0;
+    font-size: 16px;
+}
+
+.ticket-num {
+    display: flex;
+    justify-content: space-between;
+    /* Cách đều giữa các phần tử */
+    align-items: center;
+}
+
+.ticket-num button {
+    width: 40px;
+    /* Nút to hơn */
+    height: 40px;
+    background-color: #007bff;
+    /* Màu xanh nhấn mạnh */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.ticket-num button:hover {
+    background-color: #0056b3;
+    /* Màu xanh đậm hơn khi hover */
+    transform: scale(1.1);
+    /* Phóng to nhẹ */
+}
+
+.ticket-num p {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    width: 40px;
+    /* Đảm bảo căn giữa tốt */
+}
+
+.seat-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centers horizontally */
+    justify-content: center;
+    /* Centers vertically */
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.seat-container h1,
+h4 {
+    margin: 0;
+}
+
+.seat-container h2 {
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+.seat-table {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centers horizontally */
+    justify-content: center;
+    /* Centers vertically */
+    gap: 15px;
+}
+
+.seat-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* Centers horizontally */
+    justify-content: center;
+    /* Centers vertically */
+    gap: 15px;
+}
+
+.seat-duo-row {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.seat {
+    width: 40px;
+    height: 40px;
+    background-color: #f0f0f0;
+    /* Màu xám nhạt */
+    border-radius: 5px;
+    /* Bo góc */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.seat-duo {
+    width: 80px;
+    height: 40px;
+    background-color: #f0f0f0;
+    /* Màu xám nhạt */
+    border-radius: 5px;
+    /* Bo góc */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.seat:hover,
+.seat-duo:hover {
+    background-color: #575656;
+    /* Màu xám nhạt hơn khi hover */
+    color: white;
+}
+
+.seat.selected,
+.seat-duo.selected {
+    background-color: #4CAF50;
+    color: black;
+}
+
+.seat.booked,
+.seat-duo.booked {
+    background-color: yellow;
+    color: black;
+}
+
+.seat.unavailable,
+.seat-duo.unavailable {
+    background-color: red;
+    color: white;
+}
+
+.seat-info {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.legend {
+    display: flex;
+    gap: 20px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+}
+
+.seat-color {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.default {
+    background-color: white;
+}
+
+.unavailable {
+    background-color: red;
+}
+
+.selected {
+    background-color: #4CAF50;
+}
+
+.booked {
+    background-color: yellow;
+}
+
+.food-drink-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centers horizontally */
+    justify-content: center;
+    /* Centers vertically */
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.food-drink-options {
+    display: flex;
+    align-items: center;
+    /* Centers horizontally */
+    justify-content: center;
+    /* Centers vertically */
+    margin-top: 20px;
+    gap: 40px;
+}
+
+.food-drink {
+    display: flex;
+    width: 300px;
+    gap: 10px;
+}
+
+.food-drink-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.food-drink-num {
+    display: flex;
+    justify-content: space-between;
+    /* Cách đều giữa các phần tử */
+    align-items: center;
+}
+
+.food-drink-num button {
+    width: 40px;
+    /* Nút to hơn */
+    height: 40px;
+    background-color: #007bff;
+    /* Màu xanh nhấn mạnh */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.food-drink-num button:hover {
+    background-color: #0056b3;
+    /* Màu xanh đậm hơn khi hover */
+    transform: scale(1.1);
+    /* Phóng to nhẹ */
+}
+
+.food-drink-num p {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    width: 40px;
+    /* Đảm bảo căn giữa tốt */
+}
+
+/* Tổng thể của container */
+.total {
+    width: 80%;
+    /* Chiếm 80% chiều rộng */
+    margin: 0 auto;
+    /* Căn giữa container */
+    display: flex;
+    justify-content: space-between;
+    /* Căn đều 2 bên */
+    align-items: center;
+    /* Căn giữa theo trục dọc */
+    margin-top: 40px;
+}
+
+/* Remain time */
+.remain-time {
+    flex: 0 0 20%;
+    /* Chiếm 30% chiều rộng */
+    text-align: left;
+    /* Căn chữ bên trái */
+    background-color: #007bff;
+    /* Màu nền xanh lam */
+    color: #000;
+    /* Chữ đen */
+    font-weight: bold;
+    /* Chữ đậm */
+    padding: 10px;
+    /* Khoảng cách bên trong */
+    border-radius: 5px;
+    /* Bo góc */
+}
+
+/* Sum */
+.sum {
+    flex: 0 0 30%;
+    /* Chiếm 30% chiều rộng */
+    font-weight: bold;
+    /* Chữ đậm */
+    text-align: right;
+    /* Căn chữ bên phải */
+}
+
+/* Nút đặt vé */
+.sum button {
+    background-color: #007bff;
+    /* Màu nền xanh lam */
+    color: #fff;
+    /* Chữ trắng */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 10px;
+}
+
+.sum button:hover {
+    background-color: #003d80;
+    /* Màu khi hover */
+}
+
+/* Màn hình máy tính bảng (768px - 1024px) */
+@media (max-width: 1024px) {
+    .booking-container {
+        width: 90%;
+        /* Chiếm 90% chiều rộng màn hình */
+    }
+
+
+    .LNT-options .location,
+    .ticket-options .ticket,
+    .food-drink {
+        width: 100%;
+        /* Phần tử chiếm toàn bộ chiều rộng */
+    }
+
+    .total {
+        flex-direction: column;
+        /* Đặt các phần tử theo chiều dọc */
+        align-items: center;
+        gap: 15px;
+    }
+}
+
+/* Màn hình điện thoại (<768px) */
+@media (max-width: 768px) {
+
+
+    .LNT-options .location h3,
+    .LNT-options .location p,
+    .ticket-info h5,
+    .ticket-info p {
+        font-size: 14px;
+        /* Giảm kích thước chữ */
+    }
+
+    .ticket-options {
+        flex-direction: column;
+        /* Đặt các vé theo chiều dọc */
+        gap: 10px;
+    }
+
+    .food-drink {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .remain-time,
+    .sum {
+        text-align: center;
+        /* Căn chữ giữa */
+        flex: none;
+        /* Loại bỏ chiều rộng cố định */
+    }
+
+    .seat-container {
+        width: 100%;
+        /* Chiếm toàn bộ chiều rộng */
+        margin-top: 10px;
+        /* Giảm khoảng cách trên */
+        gap: 10px;
+        /* Giảm khoảng cách giữa các phần tử */
+    }
+
+    .seat-table {
+        gap: 10px;
+        /* Giảm khoảng cách giữa các hàng ghế */
+    }
+
+    .seat-row {
+        gap: 8px;
+        /* Giảm khoảng cách giữa các ghế trong một hàng */
+    }
+
+    .seat-duo-row {
+        gap: 15px;
+        /* Giảm khoảng cách giữa các ghế đôi */
+    }
+
+    .seat {
+        width: 35px;
+        /* Giảm kích thước ghế */
+        height: 35px;
+        font-size: 12px;
+        /* Giảm kích thước chữ */
+    }
+
+    .seat-duo {
+        width: 70px;
+        /* Giảm kích thước ghế đôi */
+        height: 35px;
+        font-size: 12px;
+        /* Giảm kích thước chữ */
+    }
+
+    h1,
+    h2,
+    h4 {
+        font-size: 16px;
+        /* Giảm kích thước font tiêu đề */
+    }
+
+}
+
+/* Màn hình rất nhỏ (<480px) */
+@media (max-width: 480px) {
+    .movie-title title {
+        font-size: 24px;
+        /* Giảm kích thước tiêu đề */
+    }
+
+    .ticket-num button,
+    .food-drink-num button {
+        width: 30px;
+        /* Giảm kích thước nút */
+        height: 30px;
+        font-size: 16px;
+    }
+
+    .total {
+        padding: 10px;
+    }
+
+    .seat-container {
+        margin-top: 10px;
+        /* Giảm khoảng cách trên */
+        gap: 1px;
+        /* Giảm khoảng cách giữa các phần tử */
+    }
+
+    .seat-table {
+        gap: 1px;
+        /* Giảm khoảng cách giữa các hàng ghế */
+    }
+
+    .seat-row {
+        gap: 1px;
+        /* Giảm khoảng cách giữa các ghế trong một hàng */
+    }
+
+    .seat-duo-row {
+        gap: 1px;
+        /* Giảm khoảng cách giữa các ghế đôi */
+    }
+
+    .seat {
+        width: 25px;
+        /* Giảm kích thước ghế */
+        height: 30px;
+        font-size: 10px;
+        /* Giảm kích thước chữ */
+    }
+
+    .seat-duo {
+        width: 50px;
+        /* Giảm kích thước ghế đôi */
+        height: 30px;
+        font-size: 10px;
+        /* Giảm kích thước chữ */
+    }
+
+    .seat-info {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .legend {
+        display: grid;
+        grid-template-columns: repeat(2, 3fr);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .legend-item {
+        gap: 5px;
+        font-size: 15px;
+    }
+
+    .seat-color {
+        width: 25px;
+        height: 30px;
+    }
+
+    h1,
+    h2,
+    h4 {
+        font-size: 16px;
+        /* Giảm kích thước font tiêu đề */
+    }
+}
+
+
+
+
+.nav-item {
+    position: relative;
+  }
+  
+  .nav-link {
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 15px;
+    color: white; /* Màu chữ trắng */
+    transition: linear 0.25s;
+  }
+  
+  .nav-link:hover {
+    color: #0da8a8; /* Màu chữ khi hover */
+    cursor: pointer;
+    border-bottom: 2px solid #0da8a8;
+    padding-bottom: 5px;
+  }
+  
+  .group .hidden {
+    display: none;
+  }
+  
+  .group:hover .hidden {
+    display: block;
+  }
+  
+  .absolute {
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
+  
+  .bg-white {
+    background-color: white;
+  }
+  
+  .text-black {
+    color: black;
+  }
+  
+  .shadow-lg {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .p-4 {
+    padding: 1rem;
+  }
+  
+  .rounded-lg {
+    border-radius: 0.5rem;
+  }
+  
+  .text-sm {
+    font-size: 0.875rem;
+  }
+  
+  .mb-2 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .text-blue-500 {
+    color: #3b82f6;
+  }
+  
+  .text-blue-500:hover {
+    color: #2563eb; /* Màu chữ khi hover */
+  }
+  
+  .text-black-600:hover {
+    color: #2563eb; /* Màu khi hover */
+  }
+  
+  .underline {
+    text-decoration: underline;
+  }
+  

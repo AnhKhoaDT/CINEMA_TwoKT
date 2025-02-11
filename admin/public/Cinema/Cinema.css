@@ -1,0 +1,34 @@
+.cinema-list, .cinema-detail, .room-edit, .room-add {
+    margin-left: 200px; /* Để tránh đè sidebar */
+    background-color: #f8f9fa;
+    flex-grow: 1; /* Đảm bảo form chiếm hết không gian còn lại */
+    padding: 20px;
+}
+
+#cinema-map-address {
+    min-height: 80px; /* Chiều cao tối thiểu */
+    resize: vertical; /* Cho phép kéo để thay đổi kích thước chiều cao */
+}
+
+.table {
+    margin-top: 20px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-content {
+    padding: 20px;
+}
+
+#seat-row-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Khoảng cách giữa các hàng ghế */
+}
+
+.seat-row {
+    width: 900px;
+}

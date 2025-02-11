@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Quản lý đồ ăn/uống</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Bootstrap Icons -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+        <link rel="stylesheet" href="/Food_n_Drink/Food_n_Drink.css">
+        <link rel="stylesheet" href="/sideBar.css">
+    </head>    
+    <body>
+        <%- include('./components/sidebar') %> 
+            <div class="FND p-4">
+                <h3>Danh sách đồ ăn & đồ uống</h3>
+            
+                <!-- Nút thêm đồ ăn/uống -->
+                <button id="addFoodDrinkBtn" class="btn btn-success mb-3">Thêm đồ ăn / đồ uống</button>
+            
+                <!-- Bảng danh sách đồ ăn, đồ uống -->
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên</th>
+                            <th>Ảnh</th>
+                            <th>Giá</th>
+                            <th>Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody id="foodDrinkTableBody">
+                        <!-- Nội dung sẽ được render bằng JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Modal thêm đồ ăn/uống -->
+            <div class="modal fade" id="addFoodDrinkModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Thêm đồ ăn / đồ uống</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="addFoodDrinkForm">
+                                <div class="mb-3">
+                                    <label for="foodDrinkId" class="form-label">ID (TXXX)</label>
+                                    <input type="text" id="foodDrinkId" class="form-control" required />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="foodDrinkName" class="form-label">Tên đồ ăn / đồ uống</label>
+                                    <input type="text" id="foodDrinkName" class="form-control" required />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="foodDrinkImage" class="form-label">Ảnh đồ ăn / đồ uống</label>
+                                    <input type="file" id="foodDrinkImage" class="form-control" required />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="foodDrinkPrice" class="form-label">Giá</label>
+                                    <input type="number" id="foodDrinkPrice" class="form-control" required min="0" />
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="saveFoodDrinkBtn" class="btn btn-primary">Lưu</button>
+                            <button class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Modal xóa đồ ăn/uống -->
+            <div class="modal fade" id="deleteFoodDrinkModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Xóa đồ ăn / đồ uống</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Bạn có chắc chắn muốn xóa đồ ăn / đồ uống này không?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="confirmDeleteBtn" class="btn btn-danger">Xóa</button>
+                            <button class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="/Food_n_Drink/Food_n_Drink.js"></script>
+    </body>
+</html>

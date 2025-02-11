@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Quản lý lịch chiếu</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Bootstrap Icons -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+        <link rel="stylesheet" href="Show.css">
+        <link rel="stylesheet" href="../sideBar.css">
+    </head>    
+    <body>
+        <div class="layout-wrapper">
+            <div class="sidebar">
+                <h4 class="text-white">Admin</h4>
+                <!-- Dashboard Link -->
+                <a class="sidebar-link" href="#">
+                    <i class="bi bi-house"></i> Dashboard
+                </a>
+                <ul class="sidebar-list">
+                    <!-- Sidebar Item 1 -->
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="#" data-bs-toggle="collapse" data-bs-target="#menu1">
+                            <i class="bi bi-film"></i> Quản lý phim
+                        </a>
+                        <div class="sidebar-collapse collapse" id="menu1">
+                            <ul class="sidebar-sublist ps-3">
+                                <li><a href="#" class="sidebar-sublink">Danh sách phim</a></li>
+                                <li><a href="#" class="sidebar-sublink">Thêm phim</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- Sidebar Item 2 -->
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="#" data-bs-toggle="collapse" data-bs-target="#menu2">
+                            <i class="bi bi-geo-alt"></i> Quản lý rạp phim
+                        </a>
+                        <div class="sidebar-collapse collapse" id="menu2">
+                            <ul class="sidebar-sublist ps-3">
+                                <li><a href="#" class="sidebar-sublink">Danh sách rạp phim</a></li>
+                                <li><a href="#" class="sidebar-sublink">Thêm rạp phim</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- Sidebar Item 3 -->
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="#" data-bs-toggle="collapse" data-bs-target="#menu3">
+                            <i class="bi bi-calendar"></i> Quản lý lịch chiếu 
+                        </a>
+                        <div class="sidebar-collapse collapse" id="menu3">
+                            <ul class="sidebar-sublist ps-3">
+                                <li><a href="#" class="sidebar-sublink">Danh sách lịch chiếu</a></li>
+                                <li><a href="#" class="sidebar-sublink">Thêm lịch chiếu</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                <a class="sidebar-link" href="#">
+                    <i class="bi bi-camera-video"></i> Quản lý suất chiếu
+                </a>
+                <a class="sidebar-link" href="#">
+                    <i class="bi bi-percent"></i> Quản lý khuyến mãi
+                </a>
+                <a class="sidebar-link" href="#">
+                    <i class="bi bi-ticket-perforated"></i> Quản lý giá vé
+                </a>
+                <a class="sidebar-link" href="#">
+                    <i class="bi bi-cup-straw"></i> Quản lý đồ ăn và thức uống
+                </a>
+                <a class="sidebar-link" href="#">
+                    <i class="bi bi-receipt"></i> Quản lý đơn hàng
+                </a>
+                <!-- Logout Button -->
+                <a href="#" class="sidebar-logout">
+                    <i class="bi bi-box-arrow-right"></i> Đăng xuất
+                </a>
+            </div>
+            <div class="Show-schedule flex-grow-1 p-4">
+                <h2 class="mb-4">Danh sách lịch chiếu</h2>
+                <!-- Bộ lọc -->
+                <div class="filter mb-4">
+                    <h5>Bộ lọc</h5>
+                    <div class="d-flex align-items-center mb-3">
+                        <!-- Trạng thái chiếu -->
+                        <select id="filter-status" class="form-select me-3" style="width: 225px;">
+                            <option value="all">Trạng thái chiếu: Tất cả</option>
+                            <option value="upcoming">Sắp chiếu</option>
+                            <option value="nowShowing">Đang chiếu</option>
+                            <option value="finished">Đã hết chiếu</option>
+                        </select>
+                        <!-- Lịch chiếu -->
+                        <select id="filter-schedule" class="form-select me-3" style="width: 200px;">
+                            <option value="all">Lịch chiếu: Tất cả</option>
+                            <option value="hasSchedule">Đã có</option>
+                            <option value="noSchedule">Chưa có</option>
+                        </select>
+                        <button id="filter-button" class="btn btn-primary">Lọc</button>
+                    </div>
+                </div>
+            
+                <!-- Ô tìm kiếm -->
+                <div class="search mb-4">
+                    <h5>Tìm kiếm phim</h5>
+                    <div class="input-group" style="max-width: 300px;">
+                        <input type="text" id="search-input" class="form-control" placeholder="Nhập tên phim">
+                        <button class="btn btn-primary" type="button" id="search-button">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Nút thêm lịch chiếu -->
+                <button class="btn btn-success mb-4" data-bs-toggle="modal" data-bs-target="#addScheduleModal">
+                    <i class="bi bi-plus-circle"></i> Thêm lịch chiếu
+                </button>
+            
+                <!-- Bảng danh sách -->
+                <div class="schedule-list">
+                    <h5>Danh sách lịch chiếu</h5>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Tên phim</th>
+                                <th>Ngày chiếu</th>
+                                <th>Phân loại</th>
+                                <th>Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody id="schedule-table-body">
+                            <!-- Nội dung bảng sẽ được thêm động -->
+                        </tbody>
+                    </table>
+                </div>
+            
+                <!-- Chuyển trang -->
+                <div class="pagination d-flex justify-content-center align-items-center mt-4">
+                    <button class="btn btn-secondary btn-sm me-2">&laquo;</button>
+                    <button class="btn btn-secondary btn-sm me-2">&lt;</button>
+                    <span>1/8</span>
+                    <button class="btn btn-secondary btn-sm ms-2">&gt;</button>
+                    <button class="btn btn-secondary btn-sm ms-2">&raquo;</button>
+                </div>
+                
+                <!-- Modal chỉnh sửa lịch chiếu -->
+                 <div class="modal fade" id="editScheduleModal" tabindex="-1" aria-labelledby="editScheduleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editScheduleModalLabel">Chỉnh sửa lịch chiếu</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="editScheduleForm">
+                                    <div class="mb-3">
+                                        <label for="movieTitle" class="form-label">Tên phim</label>
+                                        <input type="text" class="form-control" id="movieTitle" disabled>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="movieSchedule" class="form-label">Lịch chiếu</label>
+                                        <input type="text" class="form-control" id="movieSchedule" placeholder="dd/mm/yy - dd/mm/yy">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                                <button type="button" class="btn btn-primary" id="saveScheduleButton">Lưu thay đổi</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Thêm lịch chiếu -->
+                <div class="modal fade" id="addScheduleModal" tabindex="-1" aria-labelledby="addScheduleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="addScheduleModalLabel">Thêm lịch chiếu</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="addScheduleForm">
+                                    <div class="mb-3">
+                                        <label for="movieSelect" class="form-label">Chọn phim</label>
+                                        <select id="movieSelect" class="form-select">
+                                            <!-- Options will be rendered dynamically -->
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="theaterSelect" class="form-label">Chọn rạp</label>
+                                        <select id="theaterSelect" class="form-select">
+                                            <!-- Options will be rendered dynamically -->
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="endDate" class="form-label">Ngày kết thúc chiếu</label>
+                                        <input type="date" class="form-control" id="endDate" required>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                                <button type="button" class="btn btn-primary" id="saveScheduleButton">Lưu</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>                              
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="ShowSchedule.js"></script>
+    </body>
+</html>

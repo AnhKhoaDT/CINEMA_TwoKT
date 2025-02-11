@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Admin Dashboard</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Bootstrap Icons -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+        <link rel="stylesheet" href="./DashBoard/DashBoard.css">
+        <link rel="stylesheet" href="sideBar.css">
+    </head>    
+    <body>
+        
+        <div class="layout-wrapper">
+            <%- include('./components/sidebar') %> 
+            <div class="DashBoard-container">
+                <div class="recent-revenue">
+                    <!-- Doanh thu trong ngày -->
+                    <div class="recent-revenue-box">
+                        <p>Doanh thu trong ngày (15/5/2021)</p>
+                        <h3>760 000 VND</h3>
+                    </div>
+                    <!-- Khách hàng mới trong tháng -->
+                    <div class="recent-revenue-box">
+                        <p>Khách hàng mới (T5/2021)</p>
+                        <h3>0</h3>
+                    </div>
+                    <!-- Tổng vé bán ra trong tháng -->
+                    <div class="recent-revenue-box">
+                        <p>Tổng vé bán ra (T5/2021)</p>
+                        <h3>9</h3>
+                    </div>
+                    <!-- Tổng doanh thu trong tháng -->
+                    <div class="recent-revenue-box">
+                        <p>Tổng doanh thu (T5/2021)</p>
+                        <h3>1 826 000 VND</h3>
+                    </div>
+                </div>
+                <div class="chart">
+                    <!-- Biểu đồ cột Top 5 Phim -->
+                    <div class="movie-chart">
+                        <h5>Top 5 phim xem nhiều nhất</h5>
+                        <canvas id="movieChart"></canvas>
+                    </div>
+                    <!-- Biểu đồ đường Doanh thu 5 tháng -->
+                    <div class="revenue-chart">
+                        <h5>Doanh thu 5 tháng gần nhất</h5>
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                </div>
+                <div class="revenue">
+                    <!-- Bảng doanh thu theo phim -->
+                    <div class="movie-revenue">
+                        <h6>Doanh thu theo phim</h6>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Tên Phim</th>
+                                    <th>Tổng Vé</th>
+                                    <th>Tổng Doanh Thu</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Phim A</td>
+                                    <td>120</td>
+                                    <td>240,000 VND</td>
+                                </tr>
+                                <tr>
+                                    <td>Phim B</td>
+                                    <td>100</td>
+                                    <td>200,000 VND</td>
+                                </tr>
+                                <tr>
+                                    <td>Phim C</td>
+                                    <td>80</td>
+                                    <td>160,000 VND</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+            
+                    <!-- Bảng doanh thu theo rạp -->
+                    <div class="cinema-revenue">
+                        <h6>Doanh thu theo rạp</h6>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Tên Rạp</th>
+                                    <th>Tổng Vé</th>
+                                    <th>Tổng Doanh Thu</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Rạp A</td>
+                                    <td>200</td>
+                                    <td>400,000 VND</td>
+                                </tr>
+                                <tr>
+                                    <td>Rạp B</td>
+                                    <td>150</td>
+                                    <td>300,000 VND</td>
+                                </tr>
+                                <tr>
+                                    <td>Rạp C</td>
+                                    <td>100</td>
+                                    <td>200,000 VND</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>           
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="./DashBoard/chart-data.js"></script>
+    </body>
+</html>

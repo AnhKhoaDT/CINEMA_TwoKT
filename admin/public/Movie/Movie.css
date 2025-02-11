@@ -1,0 +1,80 @@
+.movie-add, .movie-list, .movie-edit {
+    margin-left: 200px; /* Để tránh đè sidebar */
+    background-color: #f8f9fa;
+    flex-grow: 1; /* Đảm bảo form chiếm hết không gian còn lại */
+    padding: 20px;
+}
+
+.movie-list table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.movie-list th, .movie-list td {
+    padding: 10px;
+    text-align: left;
+}
+
+.movie-list th {
+    background-color: #f0f0f0;
+    color: #333;
+    font-weight: normal;
+}
+
+.movie-list td {
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+}
+
+.movie-list tr:nth-child(even) td {
+    background-color: #f9f9f9;
+}
+
+
+.movie-edit,
+.movie-add {
+    margin-left: 200px; /* Khoảng cách bằng chiều rộng của sidebar */
+    flex-grow: 1; /* Đảm bảo nội dung chiếm hết không gian còn lại */
+}
+
+/* CSS cho phần phân trang */
+.pagination {
+    display: flex;
+    justify-content: center; /* Canh giữa các nút */
+    align-items: center;
+    margin-top: 20px; /* Khoảng cách phía trên */
+    gap: 10px; /* Khoảng cách giữa các nút */
+}
+
+.pagination .pagination-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 12px; /* Tăng kích thước nút */
+    background-color: #007bff; /* Màu nền xanh */
+    color: #fff; /* Màu chữ trắng */
+    border: none;
+    border-radius: 4px; /* Bo tròn nút */
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease; /* Hiệu ứng hover */
+}
+
+.pagination .pagination-button:disabled {
+    background-color: #ccc; /* Màu nền khi nút bị vô hiệu */
+    cursor: not-allowed;
+}
+
+.pagination .pagination-button:hover:not(:disabled) {
+    background-color: #0056b3; /* Màu nền khi hover */
+}
+
+.pagination span {
+    font-size: 16px;
+    color: #333; /* Màu chữ cho số trang */
+}
+
+.pagination .pagination-button i {
+    font-size: 18px; /* Kích thước icon */
+}

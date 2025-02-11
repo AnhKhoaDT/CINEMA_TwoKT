@@ -1,0 +1,178 @@
+
+/*movie*/
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0A1133;
+    color: #fff;
+   
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.poster-section {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.poster-img {
+    margin-top: 20px;
+    width: 700px;
+    border-radius: 10px;
+}
+
+.poster-info {
+    display: flex;
+    gap: 10px;
+}
+
+.badge, .age-rating {
+    background-color: #FF5722;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.info-section {
+    margin-top: 20px;
+}
+
+h1 {
+    margin-top: 20px;
+    font-size: 2.5rem; /* Kích thước chữ */
+    color: #FFFFFF; /* Màu chữ trắng */
+    font-weight: bold; /* Đặt chữ in đậm */
+ 
+}
+
+.movie-details {
+    list-style: none;
+    padding: 0;
+}
+
+.movie-details li {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    margin: 5px 0;
+}
+
+.age-restriction {
+    background-color: yellow;
+    color: #333;
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+h2 {
+    margin-top: 10px;
+    font-size: 2rem; /* Kích thước chữ */
+    color: #FFFFFF; /* Màu chữ trắng */
+    font-weight: bold; /* Đặt chữ in đậm */
+}
+.youtube-play-button {
+    width: 50px;
+    height: 50px;
+    background-color: #4a4abf; /* Màu nền xanh */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  .inner-circle {
+    width: 35px; /* Giảm kích thước chiều rộng */
+    height: 35px; /* Giảm kích thước chiều cao */
+    background-color: #e0e0e0; /* Màu nền vòng tròn bên trong */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2); /* Giảm kích thước viền ngoài nhạt */
+  }
+  
+  .play-icon {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 0 10px 20px;
+    border-color: transparent transparent transparent #FF0000; /* Màu đỏ cho biểu tượng tam giác */
+  }
+
+  .container-two {
+    display: flex; /* Sử dụng Flexbox để xếp các phần tử ngang hàng */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    gap: 10px; /* Khoảng cách giữa các phần tử */
+  }
+  
+
+.trailer-link {
+    font-size: 1.5em;
+    display: inline-block;
+    margin-top: 10px;
+    color: #FF5722;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.schedule-section {
+    margin-top: 20px;
+    display: flex; /* Sử dụng flexbox */
+    flex-direction: column;
+    align-items: center; /* Căn giữa phần lịch chiếu */
+}
+
+.schedule {
+    display: flex;
+    gap: 10px;
+    justify-content: center; /* Căn giữa các ngày trong lịch chiếu */
+    flex-wrap: nowrap;/* Đảm bảo lịch chiếu gấp dòng nếu không đủ không gian */
+}
+
+.schedule-date {
+    background-color: #FFEB3B;
+    color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    width: 100%;
+    max-width: 200%;
+}
+
+.schedule-date span {
+    display: block;
+    font-size: 0.8rem;
+}
+@media (max-width: 768px) {
+    .movie-container {
+        flex-direction: column; /* Đặt hướng dọc cho container */
+        align-items: center; /* Căn giữa tất cả phần tử */
+    }
+    
+    .poster-section {
+        order: 1; /* Đảm bảo hình ảnh ở trên cùng */
+        margin-bottom: 20px; /* Khoảng cách giữa poster và thông tin phim */
+    }
+
+    .info-section {
+        order: 2; /* Đặt thông tin phim dưới cùng */
+        margin-left: 0; /* Xóa khoảng cách bên trái */
+        text-align: center; /* Căn giữa nội dung */
+    }
+    .container-two {
+        justify-content: center; /* Căn giữa nút xem trailer */
+        margin-top: 10px; /* Thêm khoảng cách giữa các phần tử */
+    }
+}

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Chi tiết rạp phim</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Bootstrap Icons -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+        <link rel="stylesheet" href="Cinema.css">
+        <link rel="stylesheet" href="../sideBar.css">
+    </head>    
+    <body>
+        <div class="layout-wrapper">
+            <div class="sidebar">
+                <h4 class="text-white">Admin</h4>
+                <!-- Dashboard Link -->
+                <a class="sidebar-link" href="#">
+                    <i class="bi bi-house"></i> Dashboard
+                </a>
+                <ul class="sidebar-list">
+                    <!-- Sidebar Item 1 -->
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="#" data-bs-toggle="collapse" data-bs-target="#menu1">
+                            <i class="bi bi-film"></i> Quản lý phim
+                        </a>
+                        <div class="sidebar-collapse collapse" id="menu1">
+                            <ul class="sidebar-sublist ps-3">
+                                <li><a href="#" class="sidebar-sublink">Danh sách phim</a></li>
+                                <li><a href="#" class="sidebar-sublink">Thêm phim</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- Sidebar Item 2 -->
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="#" data-bs-toggle="collapse" data-bs-target="#menu2">
+                            <i class="bi bi-geo-alt"></i> Quản lý rạp phim
+                        </a>
+                        <div class="sidebar-collapse collapse" id="menu2">
+                            <ul class="sidebar-sublist ps-3">
+                                <li><a href="#" class="sidebar-sublink">Danh sách rạp phim</a></li>
+                                <li><a href="#" class="sidebar-sublink">Thêm rạp phim</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- Sidebar Item 3 -->
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="#" data-bs-toggle="collapse" data-bs-target="#menu3">
+                            <i class="bi bi-calendar"></i> Quản lý lịch chiếu 
+                        </a>
+                        <div class="sidebar-collapse collapse" id="menu3">
+                            <ul class="sidebar-sublist ps-3">
+                                <li><a href="#" class="sidebar-sublink">Danh sách lịch chiếu</a></li>
+                                <li><a href="#" class="sidebar-sublink">Thêm lịch chiếu</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                <a class="sidebar-link" href="#">
+                    <i class="bi bi-camera-video"></i> Quản lý suất chiếu
+                </a>
+                <a class="sidebar-link" href="#">
+                    <i class="bi bi-percent"></i> Quản lý khuyến mãi
+                </a>
+                <a class="sidebar-link" href="#">
+                    <i class="bi bi-ticket-perforated"></i> Quản lý giá vé
+                </a>
+                <a class="sidebar-link" href="#">
+                    <i class="bi bi-cup-straw"></i> Quản lý đồ ăn và thức uống
+                </a>
+                <a class="sidebar-link" href="#">
+                    <i class="bi bi-receipt"></i> Quản lý đơn hàng
+                </a>
+                <!-- Logout Button -->
+                <a href="#" class="sidebar-logout">
+                    <i class="bi bi-box-arrow-right"></i> Đăng xuất
+                </a>
+            </div>
+            <div class="cinema-detail flex-grow-1 p-4">
+                <h2 class="mb-4">Chi tiết rạp</h2>
+
+                <!-- Form chi tiết rạp -->
+                <div class="cinema-info">
+                    <div class="d-flex justify-content-end mb-4">
+                        <!-- Hai nút nằm ở góc trên bên phải -->
+                        <button class="btn btn-primary ms-2">Cập nhật rạp</button>
+                        <button class="btn btn-danger ms-2" data-bs-toggle="modal" data-bs-target="#deleteCinemaModal">Xóa rạp</button>
+                    </div>
+                
+                    <!-- Cấu trúc bố cục Flexbox -->
+                    <div class="d-flex">
+                        <!-- Phần bên trái (Thông tin rạp) -->
+                        <div class="cinema-info-section" style="flex: 1;">
+                            <!-- Các ô thông tin của rạp -->
+                            <form>
+                                <div class="mb-3">
+                                    <label for="cinemaName" class="form-label">Tên rạp</label>
+                                    <input type="text" class="form-control" id="cinemaName" value="{{ cinemaName }}" placeholder="Nhập tên rạp">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="cinemaAddress" class="form-label">Địa chỉ</label>
+                                    <input type="text" class="form-control" id="cinemaAddress" value="{{ cinemaAddress }}" placeholder="Nhập địa chỉ">
+                                </div>
+                            </form>
+                        </div>
+                
+                        <!-- Phần bên phải (Bản đồ Google) -->
+                        <div class="google-map-section" style="flex: 1; padding-left: 20px;">
+                            <iframe 
+                                id="cinemaMapEmbed" 
+                                src="https://www.google.com/maps/embed?pb={{ mapLink }}&t=m" 
+                                width="100%" 
+                                height="300" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Danh sách phòng chiếu -->
+                <div class="cinema-rooms mt-4">
+                    <div class="d-flex justify-content-between mb-4">
+                        <button class="btn btn-primary">Cập nhật danh sách phòng chiếu</button>
+                        <button class="btn btn-success">Thêm phòng chiếu</button>
+                    </div>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Tên phòng</th>
+                                <th>Ngày tạo</th>
+                                <th>Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Phòng 1</td>
+                                <td>01/11/2024</td>
+                                <td>
+                                    <button class="btn btn-warning btn-sm">Chỉnh sửa</button>
+                                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteRoomModal">Xóa</button>
+                                </td>
+                            </tr>
+                            <!-- phòng chiếu được truyền động vào -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal Xóa Rạp -->
+        <div class="modal fade" id="deleteCinemaModal" tabindex="-1" aria-labelledby="deleteCinemaModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteCinemaModalLabel">Xóa rạp</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Bạn có chắc chắn muốn xóa rạp này không? Hành động này không thể hoàn tác.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                        <button type="button" class="btn btn-danger">Xóa</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal xóa phòng chiếu -->
+        <div class="modal fade" id="deleteRoomModal" tabindex="-1" aria-labelledby="deleteRoomModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteRoomModalLabel">Xác nhận xóa phòng chiếu</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Bạn có chắc chắn muốn xóa phòng chiếu này không?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                        <button type="button" class="btn btn-danger">Xóa</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
